@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+import Navbar from "./Navbar"; // 🔹 adjust path if your Navbar file is elsewhere
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -43,7 +45,6 @@ const Contact = () => {
     }
   };
 
-
   return (
     <>
       <Navbar />
@@ -72,6 +73,7 @@ const Contact = () => {
           >
             <motion.input
               name="name"
+              type="text"
               placeholder="Enter Your Name"
               onChange={handleChange}
               value={formData.name}
@@ -90,14 +92,17 @@ const Contact = () => {
               whileFocus={{ scale: 1.02 }}
               className="Input w-full border-2 rounded-[5px] border-gray-300 focus:border-gray-600 px-2 py-2 outline-none transition duration-200"
             />
-                <input
-            name="phone"
-            placeholder="Your Phone"
-            onChange={handleChange}
-            value={formData.phone}
-            required
-            className="Input w-full border-2 rounded-[5px] border-gray-300 focus:border-gray-600 px-2 py-2 outline-none transition duration-200"
-          />
+
+            <motion.input
+              name="phone"
+              type="text"
+              placeholder="Your Phone"
+              onChange={handleChange}
+              value={formData.phone}
+              required
+              whileFocus={{ scale: 1.02 }}
+              className="Input w-full border-2 rounded-[5px] border-gray-300 focus:border-gray-600 px-2 py-2 outline-none transition duration-200"
+            />
 
             <motion.textarea
               name="message"
