@@ -1,24 +1,26 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import Navbar from "../components/Navbar";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    Name: "",
-    Email: "",
-    Message: "",
+    name: "",    
+    email: "",
+    phone: "",
+    message: "",
   });
 
   const [responseMsg, setResponseMsg] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log("📝 Field changed:", e.target.name, e.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log("🚀 Sending form data:", formData);
 
     try {
       const res = await fetch("https://wahb.buttnetworks.com/api/contact", {
@@ -28,13 +30,19 @@ const Contact = () => {
       });
 
       const data = await res.json();
-      setResponseMsg(data.message || "✅ Sent!");
-    } catch (err) {
-      setResponseMsg("❌ Error sending message.");
-    }
 
-    setTimeout(() => setResponseMsg(""), 3000);
+      if (!res.ok) throw new Error(data.error || "Something went wrong 😬");
+
+      setResponseMsg("✅ Message sent!");
+      setFormData({ name: "", email: "", phone: "", message: "" });
+
+      setTimeout(() => setResponseMsg(""), 3000);
+    } catch (error) {
+      console.error("❌ Error submitting form:", error.message || error);
+      alert(error.message || "Failed to send message.");
+    }
   };
+
 
   return (
     <>
@@ -63,31 +71,39 @@ const Contact = () => {
             transition={{ duration: 0.7, delay: 0.3 }}
           >
             <motion.input
-              name="Name"
+              name="name"
               placeholder="Enter Your Name"
               onChange={handleChange}
-              value={formData.Name}
+              value={formData.name}
               required
               whileFocus={{ scale: 1.02 }}
               className="Input w-full border-2 rounded-[5px] border-gray-300 focus:border-gray-600 px-2 py-2 outline-none transition duration-200"
             />
 
             <motion.input
-              name="Email"
+              name="email"
               type="email"
               placeholder="Enter Your Email"
               onChange={handleChange}
-              value={formData.Email}
+              value={formData.email}
               required
               whileFocus={{ scale: 1.02 }}
               className="Input w-full border-2 rounded-[5px] border-gray-300 focus:border-gray-600 px-2 py-2 outline-none transition duration-200"
             />
+                <input
+            name="phone"
+            placeholder="Your Phone"
+            onChange={handleChange}
+            value={formData.phone}
+            required
+            className="Input w-full border-2 rounded-[5px] border-gray-300 focus:border-gray-600 px-2 py-2 outline-none transition duration-200"
+          />
 
             <motion.textarea
-              name="Message"
+              name="message"
               placeholder="Enter Your Message"
               onChange={handleChange}
-              value={formData.Message}
+              value={formData.message}
               required
               rows="4"
               whileFocus={{ scale: 1.02 }}
