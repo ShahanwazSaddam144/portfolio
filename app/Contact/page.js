@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Navbar from "./Navbar"; // 🔹 adjust path if your Navbar file is elsewhere
+import Navbar from "../components/Navbar";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
