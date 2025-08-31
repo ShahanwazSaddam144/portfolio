@@ -40,7 +40,7 @@ const Footer = () => {
 
       {/* Optional Bottom Line */}
       <p className="text-center text-sm text-gray-900 mt-4">
-        Built with 💻 usindsg Next.js & Tailwind CSS
+        Built with 💻 using Next.js & Tailwind CSS
       </p>
     </footer>
   );
