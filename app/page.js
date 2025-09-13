@@ -12,8 +12,8 @@ export default function Home() {
     <Home_ />
     <Stack />
     <Projects />
-    <Offer />
     <Services />
+    <Offer />
     </>
   );
 }

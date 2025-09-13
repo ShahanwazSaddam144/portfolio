@@ -37,7 +37,7 @@ const About = () => {
 
           {/* Intro Paragraph */}
           <p className="text-center text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto mb-12 animate-fadeIn">
-            Shahnawaz Saddam Butt is a 15-year-old full-stack developer from Lahore.
+            Shahnawaz Saddam Butt is a 16-year-old full-stack developer from Lahore.
             He creates modern, responsive websites using HTML, CSS, Tailwind, JavaScript,
             React, Node.js, Next.js, and MongoDB. Also Learning Other Techs like Machine Learning and C.
           </p>

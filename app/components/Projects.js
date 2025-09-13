@@ -84,11 +84,11 @@ const Projects = () => {
             </div>
           </div>
         ))}
+      </div>
         <Link href='/Projects'>
-        <button className="mt-4 bg-gradient-to-r from-gray-600 to-gray-800 px-5 py-2 rounded-[6px] text-white cursor-pointer font-bold hover:scale-105 transform transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+        <button className="mt-6 block m-auto bg-gradient-to-r from-gray-600 to-gray-800 px-5 py-2 rounded-[6px] text-white cursor-pointer font-bold hover:scale-105 transform transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
         >View More Projets</button>
         </Link>
-      </div>
     </section>
   );
 };
