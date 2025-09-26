@@ -35,19 +35,32 @@ const stack = [
 
 const Stack = () => {
   const containerRef = useRef(null);
-  const [radius, setRadius] = useState(120); // default small radius
+  const [radius, setRadius] = useState(120);
+  const [rotation, setRotation] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
       if (containerRef.current) {
         const size = containerRef.current.offsetWidth;
-        setRadius(size / 2.4); // radius adjusts dynamically
+        setRadius(size / 2.4);
       }
     };
 
-    handleResize(); // run once on mount
+    handleResize();
     window.addEventListener("resize", handleResize);
+
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Continuous rotation effect
+  useEffect(() => {
+    let frame;
+    const rotate = () => {
+      setRotation((prev) => (prev + 0.2) % 360); // smooth slow rotation
+      frame = requestAnimationFrame(rotate);
+    };
+    frame = requestAnimationFrame(rotate);
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   return (
@@ -56,7 +69,7 @@ const Stack = () => {
         <span role="img" aria-label="briefcase">💼</span> Tech Stack
       </h1>
 
-      {/* Responsive Circle Layout */}
+      {/* Circle with rotation */}
       <div
         ref={containerRef}
         className="
@@ -65,6 +78,10 @@ const Stack = () => {
           h-[clamp(250px,70vw,500px)] 
           mx-auto flex items-center justify-center
         "
+        style={{
+          transform: `rotate(${rotation}deg)`,
+          transition: "transform 0.1s linear",
+        }}
       >
         {stack.map((item, index) => {
           const angle = (index / stack.length) * 2 * Math.PI;
@@ -81,7 +98,8 @@ const Stack = () => {
                 hover:scale-110 transition-transform duration-300 cursor-pointer
               "
               style={{
-                transform: `translate(${x}px, ${y}px)`,
+                transform: `translate(${x}px, ${y}px) rotate(${-rotation}deg)`, 
+                // counter-rotate so icons stay upright
               }}
             >
               <div className="text-lg sm:text-2xl md:text-3xl">{item.icon}</div>
