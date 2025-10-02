@@ -7,14 +7,12 @@ import {
   Moon,
   Menu,
   X,
-  Home,
-  MessageSquare,
-  LineChart,
   User2,
   FolderGit,
   Phone,
-  Bot, 
   Code,
+  GithubIcon,
+  GitBranchIcon,
 } from 'lucide-react';
 
 const Navbar = () => {
@@ -36,22 +34,18 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 bg-gray-100 Navbar left-0 w-full p-4 z-10 ">
-      <div className="flex justify-between items-center  mx-auto">
+    <nav className="fixed top-0 bg-gray-100 Navbar left-0 w-full p-4 z-10">
+      <div className="flex justify-between items-center mx-auto">
         {/* Logo */}
-        <h1 className="text-[23px] sm:text-[30px] font-bold">Shahnawaz Saddam Butt</h1>
+        <Link href="/">
+          <h1 className="text-[23px] sm:text-[30px] font-bold">
+            Shahnawaz Saddam Butt
+          </h1>
+        </Link>
 
-        {/* Desktop links - visible only after 1021px */}
+        {/* Desktop links */}
         <ul className="hidden min-[1021px]:flex space-x-8 items-center">
           <li>
-            <Link
-              href="/"
-              className="flex items-center gap-2 hover:text-yellow-300 hover:bg-gray-500 dark:hover:bg-gray-700 px-4 py-2 rounded font-semibold"
-            >
-              <Home size={18} /> Home
-            </Link>
-          </li>
-            <li>
             <Link
               href="/About"
               className="flex items-center gap-2 hover:text-yellow-300 hover:bg-gray-500 dark:hover:bg-gray-700 px-4 py-2 rounded font-semibold"
@@ -59,7 +53,7 @@ const Navbar = () => {
               <User2 size={18} /> About
             </Link>
           </li>
-            <li>
+          <li>
             <Link
               href="/Projects"
               className="flex items-center gap-2 hover:text-yellow-300 hover:bg-gray-500 dark:hover:bg-gray-700 px-4 py-2 rounded font-semibold"
@@ -67,12 +61,21 @@ const Navbar = () => {
               <FolderGit size={18} /> Projects
             </Link>
           </li>
-            <li>
+          <li>
             <Link
               href="#services"
               className="flex items-center gap-2 hover:text-yellow-300 hover:bg-gray-500 dark:hover:bg-gray-700 px-4 py-2 rounded font-semibold"
             >
               <Code size={18} /> Services
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="https://github.com/ShahanwazSaddam144?tab=repositories"
+              target="_blank"
+              className="flex items-center gap-2 hover:text-yellow-300 hover:bg-gray-500 dark:hover:bg-gray-700 px-4 py-2 rounded font-semibold"
+            >
+              <GithubIcon size={22} /> GitHub
             </Link>
           </li>
           <li>
@@ -90,7 +93,7 @@ const Navbar = () => {
           </li>
         </ul>
 
-        {/* Mobile Hamburger - visible only up to 1020px */}
+        {/* Mobile Hamburger */}
         <button
           className="min-[1021px]:hidden text-2xl"
           onClick={() => setIsOpen(!isOpen)}
@@ -99,17 +102,9 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile dropdown - visible only on small screens */}
+      {/* Mobile dropdown */}
       {isOpen && (
         <ul className="min-[1021px]:hidden mt-4 space-y-4 w-[160px] mx-auto text-center rounded-lg py-4 shadow-lg">
-          <li>
-            <Link
-              href="/"
-              className="flex items-center justify-center gap-2 px-3 py-2 rounded active:bg-gray-400 dark:active:bg-gray-700"
-            >
-              <Home size={18} /> Home
-            </Link>
-          </li>
           <li>
             <Link
               href="/About"
@@ -118,7 +113,7 @@ const Navbar = () => {
               <User2 size={18} /> About
             </Link>
           </li>
-              <li>
+          <li>
             <Link
               href="/Projects"
               className="flex items-center justify-center gap-2 px-3 py-2 rounded active:bg-gray-400 dark:active:bg-gray-700"
@@ -126,7 +121,7 @@ const Navbar = () => {
               <FolderGit size={18} /> Projects
             </Link>
           </li>
-            <li>
+          <li>
             <Link
               href="#services"
               className="flex items-center justify-center gap-2 px-3 py-2 rounded active:bg-gray-400 dark:active:bg-gray-700"
@@ -134,8 +129,16 @@ const Navbar = () => {
               <Code size={18} /> Services
             </Link>
           </li>
+            <li>
+            <Link
+              href="https://github.com/ShahanwazSaddam144?tab=repositories"
+              className="flex items-center justify-center gap-2 px-3 py-2 rounded active:bg-gray-400 dark:active:bg-gray-700"
+            >
+              <GithubIcon size={18} /> GitHub
+            </Link>
+          </li>
           <li>
-              <Link
+            <Link
               href="/Contact"
               className="flex items-center justify-center gap-2 px-3 py-2 rounded active:bg-gray-400 dark:active:bg-gray-700"
             >

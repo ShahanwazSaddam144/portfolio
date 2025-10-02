@@ -12,18 +12,18 @@ const services = [
       "I will develop modern, responsive, and user-friendly websites to your needs using the latest technologies.",
   },
   {
-    Icon: Wrench,
-    Name: "Web Maintenance",
-    Services:
-      "I will maintain, update, and optimize your website to ensure fast performance, security, and smooth user experience.",
-  },
-  {
     Icon: Code2,
     Name: "Python Development",
     Services:
       "I will build efficient Python scripts, automation tools, and backend systems for your projects and applications.",
   },
-];
+  {
+    Icon: Wrench,
+    Name: "C development",
+    Services:
+      "I will maintain, update, and optimize your website to ensure fast performance, security, and smooth user experience.",
+  },
+]
 
 const Services = () => {
   return (
