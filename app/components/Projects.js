@@ -5,9 +5,9 @@ import { ArrowRight } from "lucide-react";
 
 const projects = [
   {
-    Heading: "Blog Website",
-    Text: "A modern blog platform built with Next.js and Tailwind CSS. Features dynamic routing, SEO optimization, and a fully responsive UI.",
-    demoLink: "https://devblogs.buttnetworks.com/",
+    Heading: "Digital Website",
+    Text: "A modern digital platform built with Next.js and Tailwind CSS. Features dynamic routing, SEO optimization, and a fully responsive UI.",
+    demoLink: "https://digital-x.buttnetworks.com/",
   },
   {
     Heading: "Business Website",
