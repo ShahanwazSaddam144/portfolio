@@ -37,7 +37,7 @@ body.dark-mode .Stack h1 {
   @apply text-white;
 }
 
-body.dark-mode .Stack-P {
+body.dark-mode .Stack p {
   @apply text-white;
 }
 

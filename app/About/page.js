@@ -13,7 +13,7 @@ const getLearningDays = () => {
 const About = () => {
   const [currentTime, setCurrentTime] = useState(getLiveTime());
   const [learningDays, setLearningDays] = useState(getLearningDays());
-  const deployedProjects = 7;
+  const deployedProjects = 8;
 
   useEffect(() => {
     const timeInterval = setInterval(() => setCurrentTime(getLiveTime()), 1000);

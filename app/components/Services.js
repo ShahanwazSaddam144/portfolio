@@ -1,69 +1,87 @@
 "use client";
 
 import React from "react";
-import { Laptop, Wrench, Code2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { Laptop, Code, Database, Smartphone, Globe, Palette } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const services = [
   {
     Icon: Laptop,
     Name: "Web Development",
-    Services:
-      "I will develop modern, responsive, and user-friendly websites to your needs using the latest technologies.",
+    Service: "Building modern and responsive websites.",
   },
   {
-    Icon: Code2,
-    Name: "Python Development",
-    Services:
-      "I will build efficient Python scripts, automation tools, and backend systems for your projects and applications.",
+    Icon: Code,
+    Name: "Software Development",
+    Service: "Custom software solutions in Python and JavaScript.",
   },
   {
-    Icon: Wrench,
-    Name: "C development",
-    Services:
-      "I will maintain, update, and optimize your website to ensure fast performance, security, and smooth user experience.",
+    Icon: Smartphone,
+    Name: "React Native",
+    Service: "Cross-platform mobile applications for Android & iOS.",
   },
-]
+  {
+    Icon: Database,
+    Name: "Backend Development",
+    Service: "Secure and scalable APIs using Node.js and MongoDB.",
+  },
+  {
+    Icon: Globe,
+    Name: "SEO & Deployment",
+    Service: "Optimized websites with SEO and cloud deployment.",
+  },
+  {
+    Icon: Palette,
+    Name: "UI/UX Design",
+    Service: "Designing user-friendly and visually appealing interfaces.",
+  },
+];
 
 const Services = () => {
   return (
     <>
-      <motion.section
-        className="Services mt-20 px-6 mb-5"
-        id="services"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        <motion.h1
-          className="text-center font-extrabold text-gray-900 text-[40px] mb-10"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
+      <section className="Services mt-20 px-6 mb-5" id="services">
+        <h1 className="text-center font-extrabold text-gray-900 text-[40px] mb-10">
           Services
-        </motion.h1>
+        </h1>
 
-        <div className="flex items-center justify-center flex-wrap gap-16">
+        <Swiper
+          spaceBetween={40}
+          slidesPerView={1}
+          loop={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          modules={[Autoplay, Pagination, Navigation]}
+          className="max-w-6xl mx-auto"
+        >
           {services.map((service, index) => (
-            <motion.div
-              key={index}
-              className="Services-Container w-[280px] cursor-pointer bg-gray-100 p-6 rounded-2xl shadow-md flex flex-col items-center text-center hover:shadow-lg hover:scale-105 transition-all duration-300"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              whileHover={{ scale: 1.08, rotate: 1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <service.Icon className="w-12 h-12 text-gray-700" />
-              <h3 className="text-xl text-gray-900 font-bold mt-4">
-                {service.Name}
-              </h3>
-              <p className="text-gray-600 mt-2">{service.Services}</p>
-            </motion.div>
+            <SwiperSlide key={index}>
+              <div className="Services-Container w-[280px] sm:w-[320px] cursor-pointer bg-gray-100 p-6 rounded-2xl shadow-md flex flex-col items-center text-center hover:shadow-lg hover:scale-105 transition-all duration-300 mx-auto">
+                <service.Icon className="w-12 h-12 text-gray-700" />
+                <h3 className="text-xl text-gray-900 font-bold mt-4">
+                  {service.Name}
+                </h3>
+                <p className="text-gray-600 mt-2">{service.Service}</p>
+              </div>
+            </SwiperSlide>
           ))}
-        </div>
-      </motion.section>
+        </Swiper>
+      </section>
     </>
   );
 };
