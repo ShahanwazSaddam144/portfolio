@@ -1,92 +1,146 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Typewriter } from "react-simple-typewriter";
-import Link from 'next/link';
+import Link from "next/link";
+
+const messages = [
+  "Website Developer",
+  "React-Native Developer",
+  "C Development",
+  "Python Development",
+];
 
 const Home_ = () => {
+  // MAIN BIG ROTATING MESSAGES
+  const [text, setText] = useState("");
+  const [msgIndex, setMsgIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  // MAIN TYPEWRITER EFFECT
+  useEffect(() => {
+    const current = messages[msgIndex];
+    let speed = isDeleting ? 40 : 80;
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        setText(current.slice(0, charIndex + 1));
+        setCharIndex((prev) => prev + 1);
+
+        if (charIndex + 1 === current.length) {
+          setTimeout(() => setIsDeleting(true), 1200);
+        }
+      } else {
+        setText(current.slice(0, charIndex - 1));
+        setCharIndex((prev) => prev - 1);
+
+        if (charIndex - 1 === 0) {
+          setIsDeleting(false);
+          setMsgIndex((prev) => (prev + 1) % messages.length);
+        }
+      }
+    }, speed);
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, isDeleting, msgIndex]);
+
+
   return (
     <>
-      <section className="Home bg-transparent flex flex-col items-center mt-25 justify-center px-4">
-        <div className="text-center animate-fadeIn">
-          {/* Floating Profile Image */}
-          <div className="relative w-[250px] sm:w-[300px] mx-auto animate-float">
-            <div className="absolute inset-0 rounded-full bg-gray-700 opacity-20 blur-xl animate-pulse"></div>
-            <Image
-              src="/developer.jpg"
-              width={300}
-              height={300}
-              alt="Developer"
-              className="rounded-full w-[200px] sm:w-[250px] block m-auto border-8 border-gray-900 shadow-lg relative z-10"
-            />
+      <section className="mt-10 sm:mt-16 px-4 sm:px-8 lg:px-16">
+        <div className="flex flex-col sm:flex-col md:flex-row justify-between items-center gap-10">
+
+          {/* IMAGE */}
+          <Image
+            src="/developer.jpg"
+            alt="Developer Image"
+            width={280}
+            height={280}
+            className="mt-10 rounded-full border-4 border-gray-800 shadow-xl
+            w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[260px] md:h-[260px] lg:w-[300px] lg:h-[300px]
+            opacity-0 animate-fadeZoom"
+          />
+
+          {/* TEXT SECTION */}
+          <div className="text-center md:text-left animate-slideUp">
+            <h1 className="font-bold text-[28px] sm:text-[34px] md:text-[38px] lg:text-[40px]">
+              <span className="font-extrabold text-blue-900">Hello,</span>{" "}
+              Shahnawaz Saddam Butt
+            </h1>
+
+            {/* Line */}
+            <div className="sm:block m-auto w-full h-1 bg-gray-700 mb-2"></div>
+
+            {/* TYPEWRITER EFFECT MAIN */}
+            <h1 className="mt-3 font-bold text-[18px] sm:text-[20px] md:text-[22px] text-gray-700 mb-5">
+              <span className="Role-Text border-r-2 border-blue-900 pr-1 animate-caret">
+                {text}
+              </span>
+            </h1>
+
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center">
+
+              <Link href="/">
+                <button
+                  className="bg-gradient-to-r from-gray-600 to-gray-800 
+                  px-6 py-2 rounded-md text-white cursor-pointer font-bold 
+                  hover:scale-105 hover:shadow-lg transform transition-all duration-300 
+                  focus:outline-none focus:ring-2 focus:ring-gray-500 animate-fadeIn"
+                >
+                  View More
+                </button>
+              </Link>
+
+              <Link href="/Contact">
+                <button
+                  className="bg-gradient-to-r from-gray-600 to-gray-800 
+                  px-6 py-2 rounded-md text-white cursor-pointer font-bold 
+                  hover:scale-105 hover:shadow-lg transform transition-all duration-300 
+                  focus:outline-none focus:ring-2 focus:ring-gray-500 animate-fadeIn delay-200"
+                >
+                  Contact Me
+                </button>
+              </Link>
+
+            </div>
           </div>
-
-          <h1 className="mt-3 font-extrabold text-[30px] text-gray-900"><span>Hello I am,</span>  Shahnawaz Saddam Butt</h1>
-
-          {/* Typewriter Text */}
-          <p className="font-semibold text-[20px] sm:text-[22px] mt-6 tracking-wide ">
-            <Typewriter
-              words={[
-                "Full Stack Developer 💻",
-                "MERN Developer 🚀",
-                "Frontend Enthusiast 🎨",
-                "Backend Builder ⚙️",
-                "Learning ML & C 🧠",
-              ]}
-              loop={true}
-              cursor
-              cursorStyle="|"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={1500}
-            />
-          </p>
-
-          {/* Small tagline */}
-          <p className="mt-4 text-sm sm:text-base italic text-gray-600">
-            “Building modern web experiences with passion & creativity”
-          </p>
-
-          {/* Button */}
-          <Link href='#stack'>
-          <button
-            className="mt-4 bg-gradient-to-r from-gray-600 to-gray-800 px-5 py-2 rounded-[6px] text-white cursor-pointer font-bold hover:bg-gradient-to-l from-gray-600 to-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 hover:scale-110 focus:ring-offset-2 transition duration-200"
-          >
-            View More
-          </button>
-          </Link>
         </div>
       </section>
 
-      {/* Animations */}
-      <style jsx>{`
-        @keyframes float {
-          0% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-          100% {
-            transform: translateY(0px);
-          }
+      {/* ANIMATION STYLES */}
+      <style>{`
+        @keyframes fadeZoom {
+          0% { opacity: 0; transform: scale(0.8); }
+          100% { opacity: 1; transform: scale(1); }
         }
-        .animate-float {
-          animation: float 4s ease-in-out infinite;
+        .animate-fadeZoom {
+          animation: fadeZoom 1s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+          0% { opacity: 0; transform: translateY(25px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slideUp {
+          animation: slideUp 1s ease-out forwards;
         }
 
         @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          0% { opacity: 0; }
+          100% { opacity: 1; }
         }
         .animate-fadeIn {
-          animation: fadeIn 1s ease-out forwards;
+          animation: fadeIn 1.2s ease-out forwards;
+        }
+
+        /* CARET BLINK */
+        @keyframes caretBlink {
+          0%, 50% { border-color: transparent; }
+          50%, 100% { border-color: blue; }
+        }
+        .animate-caret {
+          animation: caretBlink 0.7s infinite;
         }
       `}</style>
     </>

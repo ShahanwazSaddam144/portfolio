@@ -73,6 +73,18 @@ body.dark-mode .Contact h1{
   @apply text-white
 }
 
+body.dark-mode .Image-Border {
+  @apply border-gray-800
+}
+
+body.dark-mode .Role-Text{
+  @apply text-gray-300
+}
+
+body.dark-mode .Enjoy-text{
+  @apply text-gray-100
+}
+
 body.dark-mode .Input{
   @apply focus:border-blue-900
 }
