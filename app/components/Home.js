@@ -11,7 +11,7 @@ const messages = [
 ];
 
 const Home_ = () => {
-  // MAIN BIG ROTATING MESSAGES
+  
   const [text, setText] = useState("");
   const [msgIndex, setMsgIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -48,7 +48,7 @@ const Home_ = () => {
   return (
     <>
       <section className="mt-10 sm:mt-16 px-4 sm:px-8 lg:px-16">
-        <div className="flex flex-col sm:flex-col md:flex-row justify-between items-center gap-10">
+        <div className="flex flex-col sm:flex-col md:flex-row  justify-between items-center gap-10">
 
           {/* IMAGE */}
           <Image
@@ -56,7 +56,7 @@ const Home_ = () => {
             alt="Developer Image"
             width={280}
             height={280}
-            className="mt-10 rounded-full border-4 border-gray-800 shadow-xl
+            className="mt-10 rounded-full border-4 border-blue-900 shadow-xl
             w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[260px] md:h-[260px] lg:w-[300px] lg:h-[300px]
             opacity-0 animate-fadeZoom"
           />
@@ -64,16 +64,16 @@ const Home_ = () => {
           {/* TEXT SECTION */}
           <div className="text-center md:text-left animate-slideUp">
             <h1 className="font-bold text-[28px] sm:text-[34px] md:text-[38px] lg:text-[40px]">
-              <span className="font-extrabold text-blue-900">Hello,</span>{" "}
+              <span className="font-extrabold text-blue-600">Hello,</span>{" "}
               Shahnawaz Saddam Butt
             </h1>
 
             {/* Line */}
-            <div className="sm:block m-auto w-full h-1 bg-gray-700 mb-2"></div>
+            <div className="sm:block m-auto w-full h-1 bg-blue-700 mb-2"></div>
 
             {/* TYPEWRITER EFFECT MAIN */}
             <h1 className="mt-3 font-bold text-[18px] sm:text-[20px] md:text-[22px] text-gray-700 mb-5">
-              <span className="Role-Text border-r-2 border-blue-900 pr-1 animate-caret">
+              <span className="Role-Text border-r-2 border-blue-600 pr-1 animate-caret">
                 {text}
               </span>
             </h1>
@@ -83,10 +83,10 @@ const Home_ = () => {
 
               <Link href="/">
                 <button
-                  className="bg-gradient-to-r from-gray-600 to-gray-800 
+                  className="bg-gradient-to-r from-blue-600 to-blue-800 
                   px-6 py-2 rounded-md text-white cursor-pointer font-bold 
                   hover:scale-105 hover:shadow-lg transform transition-all duration-300 
-                  focus:outline-none focus:ring-2 focus:ring-gray-500 animate-fadeIn"
+                  focus:outline-none focus:ring-2 focus:ring-blue-500 animate-fadeIn"
                 >
                   View More
                 </button>
@@ -94,10 +94,10 @@ const Home_ = () => {
 
               <Link href="/Contact">
                 <button
-                  className="bg-gradient-to-r from-gray-600 to-gray-800 
+                  className="bg-gradient-to-r from-blue-600 to-blue-800 
                   px-6 py-2 rounded-md text-white cursor-pointer font-bold 
                   hover:scale-105 hover:shadow-lg transform transition-all duration-300 
-                  focus:outline-none focus:ring-2 focus:ring-gray-500 animate-fadeIn delay-200"
+                  focus:outline-none focus:ring-2 focus:ring-blue-500 animate-fadeIn delay-200"
                 >
                   Contact Me
                 </button>

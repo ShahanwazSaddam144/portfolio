@@ -17,7 +17,7 @@ const services = [
   {
     Icon: Code,
     Name: "Software Development",
-    Service: "Custom software solutions in Python and JavaScript.",
+    Service: "Custom software solutions in C and JavaScript.",
   },
   {
     Icon: Smartphone,
@@ -71,8 +71,8 @@ const Services = () => {
         >
           {services.map((service, index) => (
             <SwiperSlide key={index}>
-              <div className="Services-Container w-[280px] sm:w-[320px] cursor-pointer bg-gray-100 p-6 rounded-2xl shadow-md flex flex-col items-center text-center hover:shadow-lg hover:scale-105 transition-all duration-300 mx-auto">
-                <service.Icon className="w-12 h-12 text-gray-700" />
+              <div className="Services-Container w-[280px] mb-20 sm:w-[320px] cursor-pointer bg-gray-100 p-6 rounded-2xl shadow-md flex flex-col items-center text-center hover:shadow-lg hover:scale-105 transition-all duration-300 mx-auto">
+                <service.Icon className="w-12 h-12 text-blue-700" />
                 <h3 className="text-xl text-gray-900 font-bold mt-4">
                   {service.Name}
                 </h3>

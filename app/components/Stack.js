@@ -103,8 +103,8 @@ const stack = [
 
 const Skills = () => {
   return (
-    <section className="Stack py-10 px-5 mt-20 bg-transparent" id="skills">
-      <h1 className="text-4xl font-bold text-center mb-10 flex items-center justify-center gap-3 text-gray-800">
+    <section className="Stack py-10 px-5 mt-20" id="skills">
+      <h1 className="text-4xl font-bold text-center flex bg-transparent items-center justify-center mb-10 gap-3 text-gray-800">
         <span role="img" aria-label="briefcase">
           💼
         </span>

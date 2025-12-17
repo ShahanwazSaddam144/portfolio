@@ -46,7 +46,7 @@ const Projects = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="Projects mt-20 px-4 md:px-16 mb-5" id="projects">
+    <section ref={sectionRef} className="Projects  justify-center items-center  mt-20 px-4 md:px-16 mb-5" id="projects">
       <h1
         className={`text-center font-extrabold text-[35px] text-gray-800 mb-10 transition-opacity duration-700 ${
           visible ? "animate-fadeIn" : "opacity-0"
@@ -77,7 +77,7 @@ const Projects = () => {
                 href={project.demoLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 bg-gradient-to-r from-gray-600 to-gray-800 px-5 py-2 rounded-[6px] text-white cursor-pointer font-bold hover:scale-105 transform transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                className="mt-4 bg-gradient-to-r from-blue-600 to-blue-800 px-5 py-2 rounded-[6px] text-white cursor-pointer font-bold hover:scale-105 transform transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               >
                 Live Demo
               </a>
@@ -86,7 +86,7 @@ const Projects = () => {
         ))}
       </div>
         <Link href='/Projects'>
-        <button className="mt-6 block m-auto bg-gradient-to-r from-gray-600 to-gray-800 px-5 py-2 rounded-[6px] text-white cursor-pointer font-bold hover:scale-105 transform transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+        <button className="mt-6 block m-auto bg-gradient-to-r from-blue-600 to-blue-800 px-5 py-2 rounded-[6px] text-white cursor-pointer font-bold hover:scale-105 transform transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >View More Projets</button>
         </Link>
     </section>

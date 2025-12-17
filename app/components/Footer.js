@@ -17,7 +17,7 @@ const Footer = () => {
             href="https://github.com/ShahanwazSaddam144?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-gray-900 transition"
+            className="hover:text-blue-800 transition"
           >
             <FaGithub size={20} />
           </a>
@@ -25,13 +25,13 @@ const Footer = () => {
             href="https://linkedin.com/in/your-profile"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-gray-900 transition"
+            className="hover:text-blue-800 transition"
           >
             <FaLinkedin size={20} />
           </a>
           <a
             href="mailto:shahnawazsaddamb@gmail.com"
-            className="hover:text-gray-900 transition"
+            className="hover:text-blue-800 transition"
           >
             <FaEnvelope size={20} />
           </a>

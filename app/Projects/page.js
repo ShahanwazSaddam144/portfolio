@@ -36,6 +36,11 @@ const projects = [
     demoLink: "https://tic-tac-toebuttnetworks.netlify.app/",
   },
   {
+    Heading: "Mobile Quiz App",
+    Text: "A fun and engaging mobile quiz application featuring multiple-choice questions, real-time score tracking, and an interactive user interface. Built with React to deliver a smooth and responsive user experience.”",
+    downloadLink: "https://tic-tac-toebuttnetworks.netlify.app/",
+  },
+  {
     Heading: "Note Pad",
     Text: "A lightweight Notepad application with formatting and save features. Built using Python and Tkinter, packaged as a Windows executable.",
     downloadLink: "/notepad.exe",
@@ -119,7 +124,7 @@ const Projects = () => {
                       href={project.demoLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-4 bg-gradient-to-r from-gray-600 to-gray-800 px-5 py-2 rounded-[6px] text-white cursor-pointer font-bold hover:scale-105 transform transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                      className="mt-4 bg-gradient-to-r from-blue-600 to-blue-800 px-5 py-2 rounded-[6px] text-white cursor-pointer font-bold hover:scale-105 transform transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                     >
                       Live Demo
                     </a>
@@ -127,7 +132,7 @@ const Projects = () => {
                     <a
                       href={project.downloadLink}
                       download
-                      className="mt-4 bg-gradient-to-r from-gray-600 to-gray-800 px-5 py-2 rounded-[6px] text-white cursor-pointer font-bold hover:scale-105 transform transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                      className="mt-4 bg-gradient-to-r from-blue-600 to-blue-800 px-5 py-2 rounded-[6px] text-white cursor-pointer font-bold hover:scale-105 transform transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                     >
                       Download .exe
                     </a>
