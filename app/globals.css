@@ -14,11 +14,12 @@ body {
 }
 
 body.dark-mode {
-  @apply bg-black text-white;
+  @apply text-white;
+  background-color: rgb(0, 6, 12);
 }
 
 body.dark-mode .Navbar {
-  background-color: black;
+  background-color: rgb(0, 11, 21);
 }
 
 body.dark-mode .About h1 {
@@ -30,7 +31,7 @@ body.dark-mode .About p {
 }
 
 body.dark-mode .Container {
-  background: rgb(16, 16, 16) !important;
+  background-color: rgb(0, 11, 21);
 }
 
 body.dark-mode .Stack h1 {
@@ -42,7 +43,7 @@ body.dark-mode .Stack p {
 }
 
 body.dark-mode .Stack-Container {
-  background: rgb(16, 16, 16) !important;
+ background-color: rgb(0, 11, 21);
 }
 
 body.dark-mode .Projects h1 {
@@ -50,7 +51,7 @@ body.dark-mode .Projects h1 {
 }
 
 body.dark-mode .Projects-Container {
-  background: rgb(16, 16, 16) !important;
+  background-color: rgb(0, 11, 21);
 }
 
 body.dark-mode .Projects-Container h2 {
@@ -106,11 +107,11 @@ body.dark-mode .Services p{
 }
 
 body.dark-mode .Services-Container{
-  background: rgb(16, 16, 16) !important;
+  background-color: rgb(0, 11, 21);
 }
 
 body.dark-mode .Footer{
-  background: rgb(16, 16, 16) !important;
+  background-color: rgb(0, 11, 21);
   color: white;
 }
 
