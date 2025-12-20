@@ -66,15 +66,15 @@ const Projects = () => {
         {projects.map((project, index) => (
           <SwiperSlide key={index}>
             <div className="Projects-Container bg-gray-100 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 p-6 flex flex-col justify-between h-full">
-              <div className="mb-4">
-                <Image
-                  src={project.image}
-                  alt={project.Heading}
-                  width={350}
-                  height={200}
-                  className="rounded-lg object-cover w-full h-[200px]"
-                />
-              </div>
+<div className="relative w-full h-48 mb-4">
+  <Image
+    src={project.image}
+    alt={project.Heading}
+    fill
+    className="rounded-lg object-cover"
+  />
+</div>
+
               <h2 className="font-bold text-2xl mb-4 text-gray-900 transition-colors duration-300 hover:text-gray-700">
                 {project.Heading}
               </h2>
