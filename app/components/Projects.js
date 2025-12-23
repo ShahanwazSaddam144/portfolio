@@ -41,6 +41,13 @@ const projects = [
     image: "/portfoliohome.png",
     technologies: ["Next.JS", "Tailwind CSS"],
   },
+  {
+    Heading: "Admin Panel",
+    Text: "A comprehensive admin panel designed to manage website content, user interactions, and settings efficiently, featuring full-stack functionality and a responsive interface.",
+    demoLink: "https://github.com/ShahanwazSaddam144/admin-panel",
+    image: "/adminhome.png",
+    technologies: ["Next.JS", "Tailwind CSS", "Node.JS", "Express.JS", "MongoDB"],
+  },
 ];
 
 const Projects = () => {
@@ -95,7 +102,16 @@ const Projects = () => {
                 ))}
               </div>
               <div className="mt-auto">
-                {project.demoLink.endsWith(".apk") ? (
+                {project.Heading === "Admin Panel" ? (
+                  <a
+                    href={project.demoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 bg-gradient-to-r from-gray-600 to-gray-900 px-5 py-2 rounded-[6px] text-white cursor-pointer font-bold hover:scale-105 transform transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                  >
+                    View Code
+                  </a>
+                ) : project.demoLink.endsWith(".apk") ? (
                   <a
                     href={project.demoLink}
                     download
