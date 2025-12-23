@@ -101,35 +101,35 @@ const About = () => {
 
   {/* Journey */}
   <div className="max-w-3xl mx-auto">
-    <h2 className="text-2xl font-semibold mb-6 text-center">
+    <h2 className="text-2xl font-bold mb-6 text-center">
       My Journey
     </h2>
 
     <div className="space-y-6 border-l-2 border-blue-600 pl-6">
       <div>
-        <span className="text-sm text-blue-600 font-semibold">2022</span>
+        <span className="text-sm text-blue-600 font-semibold">2024</span>
         <h3 className="font-semibold">Started Web Development</h3>
         <p className="text-gray-500">
-          Began learning HTML, CSS, and JavaScript with a strong interest in
+          Began learning HTML and CSS, with a strong interest in
           building interactive websites.
         </p>
       </div>
 
       <div>
-        <span className="text-sm text-blue-600 font-semibold">2023</span>
+        <span className="text-sm text-blue-600 font-semibold">2025</span>
         <h3 className="font-semibold">Moved to Full-Stack Development</h3>
         <p className="text-gray-500">
-          Worked with React, Node.js, Express, and MongoDB to build complete
+          Worked with JavaScript, React, Node.js, Express, and MongoDB to build complete
           full-stack applications.
         </p>
       </div>
 
       <div>
-        <span className="text-sm text-blue-600 font-semibold">2024</span>
-        <h3 className="font-semibold">Freelancing & Advanced Projects</h3>
+        <span className="text-sm text-blue-600 font-semibold">2025 (Ending)</span>
+        <h3 className="font-semibold">Finding Clients & Making Advanced Projects</h3>
         <p className="text-gray-500">
-          Started freelancing, creating modern apps using Next.js, Tailwind CSS,
-          and authentication systems.
+          Started finding clients, creating modern apps using Next.js, Tailwind CSS, Node.JS,
+          Express.JS, MongoDB, authentication systems and etc, etc.
         </p>
       </div>
     </div>
