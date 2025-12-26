@@ -1,153 +1,163 @@
 "use client";
 import React from "react";
-import {
-  FaNodeJs,
-  FaReact,
-  FaPython,
-  FaLinux,
-} from "react-icons/fa";
 
+// ICONS
+import { FaNodeJs, FaReact, FaPython } from "react-icons/fa";
 import {
+  SiHtml5,
   SiTailwindcss,
   SiJavascript,
   SiExpress,
   SiMongodb,
   SiNextdotjs,
+  SiTypescript,
+  SiDocker,
+  SiNginx,
+  SiGithub,
+  SiMysql,
+  SiScikitlearn,
   SiC,
-  SiTensorflow,
-  SiReact,
+  SiCplusplus,
+  SiNumpy,
+  SiPandas,
+  SiCss3,
 } from "react-icons/si";
 
-// Swiper imports
+// Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { icons } from "lucide-react";
 
-const stack = [
-  { 
-    name: "JavaScript", 
-    icon: <SiJavascript className="text-yellow-400" />, 
-    progress: 70,
-    desc: "Core language for web interactivity and app logic."
+// ================= DATA =================
+const skillsData = [
+  {
+    title: "Frontend",
+    skills: [
+      { name: "HTML", icon: <SiHtml5 /> },
+      { name: "CSS", icon: <SiCss3 /> },
+      { name: "Tailwind", icon: <SiTailwindcss /> },
+      { name: "JavaScript", icon: <SiJavascript /> },
+      { name: "TypeScript", icon: <SiTypescript /> },
+      { name: "React", icon: <FaReact /> },
+      { name: "Next.js", icon: <SiNextdotjs /> },
+      { name: "ReactNative", icon: <FaReact /> },
+    ],
   },
-  { 
-    name: "Tailwind CSS", 
-    icon: <SiTailwindcss className="text-sky-500" />, 
-    progress: 75,
-    desc: "Utility-first CSS framework for responsive designs."
+  {
+    title: "Backend",
+    skills: [
+      { name: "Node.js", icon: <FaNodeJs /> },
+      { name: "Express", icon: <SiExpress /> },
+      { name: "Python", icon: <FaPython /> },
+      { name: "SciketLearn", icon: <SiScikitlearn /> },
+      { name: "Language", icon: <SiC /> },
+      { name: "Language", icon: <SiCplusplus /> },
+      { name: "NumPy", icon: <SiNumpy /> },
+      {name: "Pandas", icon: <SiPandas />},
+    ],
   },
-  { 
-    name: "Node.js", 
-    icon: <FaNodeJs className="text-green-600" />, 
-    progress: 80,
-    desc: "JavaScript runtime for scalable backend systems."
+  {
+    title: "DevOps",
+    skills: [
+      { name: "Docker", icon: <SiDocker /> },
+      { name: "Nginx", icon: <SiNginx /> },
+      { name: "GitHub", icon: <SiGithub /> },
+    ],
   },
-  { 
-    name: "Express.js", 
-    icon: <SiExpress className="text-gray-700" />, 
-    progress: 75,
-    desc: "Minimalist backend framework for Node.js APIs."
-  },
-  { 
-    name: "MongoDB", 
-    icon: <SiMongodb className="text-green-700" />, 
-    progress: 70,
-    desc: "NoSQL database for flexible and fast data storage."
-  },
-  { 
-    name: "React.js", 
-    icon: <FaReact className="text-cyan-400" />, 
-    progress: 78,
-    desc: "Library for creating interactive UIs and components."
-  },
-  { 
-    name: "Next.js", 
-    icon: <SiNextdotjs className="text-black" />, 
-    progress: 78,
-    desc: "React framework for SSR and full-stack apps."
-  },
-  { 
-    name: "React Native", 
-    icon: <SiReact className="text-cyan-500" />, 
-    progress: 65,
-    desc: "Platform for apps framework for iOS and Android."
-  },
-  { 
-    name: "Python", 
-    icon: <FaPython className="text-blue-700" />, 
-    progress: 80,
-    desc: "Versatile language for web, AI, and automation."
-  },
-  { 
-    name: "Scikit-Learn (ML)", 
-    icon: <SiTensorflow className="text-orange-400" />, 
-    progress: 45,
-    desc: "Machine learning library for building models."
-  },
-  { 
-    name: "Linux", 
-    icon: <FaLinux className="text-gray-800 " />, 
-    progress: 70,
-    desc: "For deploying and managing applications securely."
-  },
-  { 
-    name: "C Language", 
-    icon: <SiC className="text-blue-800" />, 
-    progress: 60,
-    desc: "Low-level language for system and performance apps."
+  {
+    title: "Database",
+    skills: [
+      { name: "MongoDB", icon: <SiMongodb /> },
+      { name: "MySQL", icon: <SiMysql /> },
+    ],
   },
 ];
 
+const skillColors = {
+  HTML: "text-orange-500",
+  CSS: "text-blue-500",
+  Tailwind: "text-cyan-400",
+  JavaScript: "text-yellow-400",
+  TypeScript: "text-blue-600",
+  React: "text-cyan-500",
+  "Next.js": "text-black",
+  ReactNative: "text-blue-900",
+  "Node.js": "text-green-600",
+  Express: "text-gray-700",
+  Python: "text-blue-600",
+  MongoDB: "text-green-500",
+  Docker: "text-sky-500",
+  Nginx: "text-green-600",
+  GitHub: "text-black",
+  MySQL: "text-blue-600",
+  SciketLearn: "text-orange-500",
+  Language: "text-blue-700", 
+  NumPy: "text-blue-800",
+  Pandas: "text-sky-500"
+};
+
+// ================= COMPONENT =================
 const Skills = () => {
   return (
-    <section className="Stack py-10 px-5 mt-20" id="skills">
-      <h1 className="text-4xl font-bold text-center flex bg-transparent items-center justify-center mb-10 gap-3 text-gray-800">
-        <span role="img" aria-label="briefcase">
-          💼
-        </span>
-        Tech Stack
+    <section id="skills" className="py-16 px-5 max-w-7xl mx-auto">
+      <h1 className="text-4xl font-bold text-center mb-14">
+        💼 Tech Stack
       </h1>
 
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={20}
-        slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 2500, disableOnInteraction: false }}
-        breakpoints={{
-          640: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-          1280: { slidesPerView: 4 },
-        }}
-        className="max-w-6xl mx-auto"
-      >
-        {stack.map((item, index) => (
-          <SwiperSlide key={index}>
-            <div className="Stack-Container bg-gray-100 shadow-lg rounded-xl p-6 flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105 cursor-pointer">
-              <div className="text-5xl">{item.icon}</div>
-              <p className="text-xl font-semibold text-gray-900">{item.name}</p>
-              <p className="text-sm text-gray-600 text-center">{item.desc}</p>
-
-              {/* Progress bar */}
-              <div className="w-full bg-gray-200 rounded-full h-3 mt-2 relative overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full transition-all duration-700"
-                  style={{ width: `${item.progress}%` }}
-                />
-                <span className="absolute inset-0 flex justify-center items-center text-xs font-semibold text-white">
-                  {item.progress}%
-                </span>
-              </div>
-            </div>
-          </SwiperSlide>
+      {/* DESKTOP GRID */}
+      <div className="hidden md:grid md:grid-cols-2 gap-10">
+        {skillsData.map((category, idx) => (
+          <SkillCard key={idx} category={category} />
         ))}
-      </Swiper>
+      </div>
+
+      {/* MOBILE SWIPER */}
+      <div className="md:hidden">
+        <Swiper
+          modules={[Pagination]}
+          pagination={{ clickable: true }}
+          spaceBetween={20}
+          slidesPerView={1}
+        >
+          {skillsData.map((category, idx) => (
+            <SwiperSlide key={idx}>
+              <SkillCard category={category} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </section>
   );
 };
+
+const SkillCard = ({ category }) => (
+  <div className="Stack-Container bg-gray-100 rounded-2xl p-6">
+    {/* Header */}
+    <div className="flex justify-between items-center mb-6">
+      <h2 className="text-2xl font-semibold">{category.title}</h2>
+      <span className="text-sm text-gray-600">
+        {category.skills.length} SKILLS
+      </span>
+    </div>
+
+    {/* Skills Grid */}
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      {category.skills.map((skill, i) => (
+        <div
+          key={i}
+          className="Stack-Elements border border-white bg-white rounded-xl shadow-sm p-4 flex flex-col items-center gap-2 hover:scale-105 transition"
+        >
+          <div className={`text-4xl ${skillColors[skill.name]}`}>
+            {skill.icon}
+          </div>
+          <p className="font-medium text-sm">{skill.name}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+);
 
 export default Skills;
