@@ -32,7 +32,7 @@ const projects = [
     Text: "An interactive e-commerce application with multiple categories, real-time products, and auth system.",
     demoLink: "/BoltForm.apk",
     image: "/light-shop.png",
-    technologies: ["React-Native", "Async-Storage", "Node.Js", "Express.js","MongoDB"],
+    technologies: ["React-Native", "Async-Storage", "Node.Js", "Express.js", "MongoDB"],
   },
   {
     Heading: "Portfolio Website",
@@ -74,8 +74,9 @@ const Projects = () => {
         }}
       >
         {projects.map((project, index) => (
-          <SwiperSlide key={index}>
-            <div className="Projects-Container bg-gray-100 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 p-6 flex flex-col justify-between h-full">
+          <SwiperSlide key={index} className="flex">
+            <div className="Projects-Container bg-gray-100 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 p-6 flex flex-col h-full">
+              
               <div className="relative w-full h-48 mb-4">
                 <Image
                   src={project.image}
@@ -88,9 +89,11 @@ const Projects = () => {
               <h2 className="font-bold text-2xl mb-4 text-gray-900 transition-colors duration-300 hover:text-gray-700">
                 {project.Heading}
               </h2>
+
               <p className="text-gray-700 mb-4 transition-opacity duration-300 hover:opacity-80">
                 {project.Text}
               </p>
+
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.technologies.map((tech, idx) => (
                   <span
@@ -101,13 +104,15 @@ const Projects = () => {
                   </span>
                 ))}
               </div>
+
+              {/* Bottom aligned button */}
               <div className="mt-auto">
                 {project.Heading === "Admin Panel" ? (
                   <a
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 bg-gradient-to-r from-gray-600 to-gray-900 px-5 py-2 rounded-[6px] text-white cursor-pointer font-bold hover:scale-105 transform transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                    className="mt-4 bg-gradient-to-r from-blue-600 to-blue-800 px-5 py-2 rounded-[6px] text-white cursor-pointer font-bold hover:scale-105 transform transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                   >
                     View Code
                   </a>
@@ -130,6 +135,7 @@ const Projects = () => {
                   </a>
                 )}
               </div>
+
             </div>
           </SwiperSlide>
         ))}

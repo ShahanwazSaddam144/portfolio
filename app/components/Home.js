@@ -10,14 +10,33 @@ const messages = [
   "Python Development",
 ];
 
+const techStacks = [
+  "Next.js",
+  "React",
+  "React-Native",
+  "Node.js",
+  "Express",
+  "MongoDB",
+  "Tailwind CSS",
+  "SQL",
+  "C Language",
+  "C++ Language"
+];
+
 const Home_ = () => {
-  
+  /* MAIN TYPEWRITER */
   const [text, setText] = useState("");
   const [msgIndex, setMsgIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // MAIN TYPEWRITER EFFECT
+  /* TECH STACK TYPEWRITER */
+  const [techText, setTechText] = useState("");
+  const [techIndex, setTechIndex] = useState(0);
+  const [techChar, setTechChar] = useState(0);
+  const [techDeleting, setTechDeleting] = useState(false);
+
+  // ROLE TYPEWRITER
   useEffect(() => {
     const current = messages[msgIndex];
     let speed = isDeleting ? 40 : 80;
@@ -44,11 +63,37 @@ const Home_ = () => {
     return () => clearTimeout(timeout);
   }, [charIndex, isDeleting, msgIndex]);
 
+  // TECH STACK TYPEWRITER
+  useEffect(() => {
+    const current = techStacks[techIndex];
+    let speed = techDeleting ? 35 : 70;
+
+    const timeout = setTimeout(() => {
+      if (!techDeleting) {
+        setTechText(current.slice(0, techChar + 1));
+        setTechChar((prev) => prev + 1);
+
+        if (techChar + 1 === current.length) {
+          setTimeout(() => setTechDeleting(true), 1000);
+        }
+      } else {
+        setTechText(current.slice(0, techChar - 1));
+        setTechChar((prev) => prev - 1);
+
+        if (techChar - 1 === 0) {
+          setTechDeleting(false);
+          setTechIndex((prev) => (prev + 1) % techStacks.length);
+        }
+      }
+    }, speed);
+
+    return () => clearTimeout(timeout);
+  }, [techChar, techDeleting, techIndex]);
 
   return (
     <>
-      <section className="mt-10 sm:mt-16 px-4 sm:px-8 lg:px-16">
-        <div className="flex flex-col sm:flex-col md:flex-row  justify-between items-center gap-10">
+      <section className="mt-10 sm:mt-30 px-4 sm:px-8 mb-15 lg:px-16">
+        <div className="flex flex-col sm:flex-col md:flex-row justify-between items-center gap-10">
 
           {/* IMAGE */}
           <Image
@@ -71,16 +116,31 @@ const Home_ = () => {
             {/* Line */}
             <div className="sm:block m-auto w-full h-1 bg-blue-700 mb-2"></div>
 
-            {/* TYPEWRITER EFFECT MAIN */}
-            <h1 className="mt-3 font-bold text-[18px] sm:text-[20px] md:text-[22px] text-gray-700 mb-5">
+            {/* ROLE TYPEWRITER */}
+            <h1 className="mt-3 font-bold text-[18px] sm:text-[20px] md:text-[22px] text-gray-700 mb-3">
               <span className="Role-Text border-r-2 border-blue-600 pr-1 animate-caret">
                 {text}
               </span>
             </h1>
 
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center">
+            {/* DESCRIPTION */}
+            <p className="text-gray-600 text-[14px] sm:text-[15px] md:text-[16px] max-w-xl mb-4">
+              I am a passionate full-stack developer specializing in building
+              modern, scalable, and high-performance web & mobile applications.
+              I focus on clean UI, optimized backend systems, and smooth user
+              experiences.
+            </p>
 
+            {/* TECH STACK TYPEWRITER */}
+            <p className="text-gray-700 font-semibold mb-5">
+              Tech Stack:{" "}
+              <span className="text-blue-700 border-r-2 border-blue-600 pr-1 animate-caret">
+                {techText}
+              </span>
+            </p>
+
+            {/* BUTTONS */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center">
               <Link href="/">
                 <button
                   className="bg-gradient-to-r from-blue-600 to-blue-800 
@@ -102,7 +162,6 @@ const Home_ = () => {
                   Contact Me
                 </button>
               </Link>
-
             </div>
           </div>
         </div>
@@ -134,7 +193,6 @@ const Home_ = () => {
           animation: fadeIn 1.2s ease-out forwards;
         }
 
-        /* CARET BLINK */
         @keyframes caretBlink {
           0%, 50% { border-color: transparent; }
           50%, 100% { border-color: blue; }
