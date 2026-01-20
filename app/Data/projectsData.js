@@ -1,45 +1,61 @@
 export const projects = [
   {
+    slug: "digital-website",
     Heading: "Digital Website",
     Text: "A modern digital platform built with Next.js and Tailwind CSS. Features dynamic routing, SEO optimization, and a fully responsive UI.",
     demoLink: "https://digital-x.buttnetworks.com/",
     Repo: "https://github.com/ShahanwazSaddam144/digital-x",
     image: "/ProjectImages/Home.png",
     technologies: ["Next.js", "Tailwind CSS", "Node JS", "Express", "Mongo DB"],
+
+    // ➕ Added details
+    author: "Shahnawaz Saddam Butt",
+    email: "shahnawaz@example.com",
+    startDate: "2024-01-10",
+    endDate: "2024-02-05",
+    status: "Completed",
+    role: "Full Stack Developer",
+    category: "Client Project",
   },
   {
+    slug: "business-website",
     Heading: "Business Website",
     Text: "A professional business website with features like Dark-Mode and Contact Form built using React, Node.js, Express, and MongoDB for full-stack functionality.",
     demoLink: "https://buttnetworks.com/",
     Repo: "https://github.com/ShahanwazSaddam144/Butt-Networks",
     image: "/ProjectImages/ButtHome.png",
     technologies: ["Next JS", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+
+    // ➕ Added details
+    author: "Shahnawaz Saddam Butt",
+    email: "shahnawaz@example.com",
+    startDate: "2023-11-01",
+    endDate: "2023-12-15",
+    status: "Live",
+    role: "Full Stack Developer",
+    category: "Business Website",
   },
 
-  /*{
-    Heading: "Mobile E-Commerce App",
-    Text: "An interactive e-commerce application with multiple categories, real-time products, and auth system.",
-    demoLink: "/BoltForm.apk",
-    Repo:"https://github.com/ShahanwazSaddam144/BoltForm",
-    image: "/ProjectImages/BoltformHome.jpeg",
-    technologies: [
-      "React-Native",
-      "Async-Storage",
-      "Node.Js",
-      "Express.js",
-      "MongoDB",
-    ],
-  },*/
-
   {
+    slug: "porfolio-website",
     Heading: "Portfolio Website",
     Text: "A professional portfolio website with features like Dark-Mode and Contact Form built using for full-stack functionality. A proper sleek and modern design according to client choice and fully user expreince of client.",
     demoLink: "https://syedzeeshanhaider.netlify.app/",
     Repo: "https://github.com/wahb-amir/Zeeshan",
     image: "/ProjectImages/portfoliohome.png",
     technologies: ["Next.JS", "Tailwind CSS"],
+
+    // ➕ Added details
+    author: "Shahnawaz Saddam Butt",
+    email: "shahnawaz@example.com",
+    startDate: "2024-03-01",
+    endDate: "2024-03-20",
+    status: "Completed",
+    role: "Frontend Developer",
+    category: "Portfolio",
   },
   {
+    slug: "adminpanel-website",
     Heading: "Admin Panel",
     Text: "A comprehensive admin panel designed to manage website content, user interactions, and settings efficiently, featuring full-stack functionality and a responsive interface.",
     demoLink: "https://github.com/ShahanwazSaddam144/admin-panel",
@@ -52,8 +68,18 @@ export const projects = [
       "Express.JS",
       "MongoDB",
     ],
+
+    // ➕ Added details
+    author: "Shahnawaz Saddam Butt",
+    email: "shahnawaz@example.com",
+    startDate: "2024-04-05",
+    endDate: "2024-05-01",
+    status: "In Progress",
+    role: "Full Stack Developer",
+    category: "Admin Dashboard",
   },
   {
+    slug: "keychains-website",
     Heading: "Key&Chains",
     Text: "Built a performant e-commerce demo that demonstrates secure checkout, mobile-first UX, and an admin view — ideal as an MVP for small businesses.",
     demoLink: "https://github.com/ShahanwazSaddam144/admin-panel",
@@ -66,5 +92,14 @@ export const projects = [
       "Express.JS",
       "MongoDB",
     ],
+
+    // ➕ Added details
+    author: "Shahnawaz Saddam Butt",
+    email: "shahnawaz@example.com",
+    startDate: "2024-05-10",
+    endDate: "2024-06-10",
+    status: "Completed",
+    role: "E-Commerce Developer",
+    category: "E-Commerce MVP",
   },
 ];
