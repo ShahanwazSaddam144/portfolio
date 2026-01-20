@@ -1,131 +1,156 @@
 @import "tailwindcss";
 
+/* --------------------
+   🌐 Base
+-------------------- */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  transition: 0.3s background;
-  @apply bg-gray-50;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+  @apply bg-gray-50 text-gray-900;
 }
 
-::placeholder {
-  @apply text-blue-800 font-semibold;
+/* --------------------
+   🎨 Design Tokens (Light)
+-------------------- */
+:root {
+  --bg-main: #f9fafb;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+
+  --border: #e5e7eb;
+
+  --text-main: #111827;
+  --text-muted: #6b7280;
+
+  --primary: #3b82f6;
+  --primary-soft: rgba(59, 130, 246, 0.15);
 }
 
+/* --------------------
+   🌓 Dark Mode Tokens
+-------------------- */
 body.dark-mode {
-  @apply text-white;
-  background-color: rgb(0, 6, 12);
+  --bg-main: rgb(3, 10, 22);
+  --bg-secondary: rgb(7, 18, 36);
+  --bg-card: rgb(10, 25, 47);
+
+  --border: rgb(25, 45, 80);
+
+  --text-main: rgb(229, 231, 235);
+  --text-muted: rgb(156, 163, 175);
+
+  --primary: rgb(59, 130, 246);
+  --primary-soft: rgba(59, 130, 246, 0.25);
 }
 
-body.dark-mode .Navbar {
-  background-color: rgb(0, 11, 21);
+/* --------------------
+   🌑 Dark Mode Base
+-------------------- */
+body.dark-mode {
+  background-color: var(--bg-main);
+  color: var(--text-main);
 }
 
-body.dark-mode .About h1 {
-  @apply text-white;
+/* --------------------
+   🧭 Navbar
+-------------------- */
+.Navbar {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
 }
 
-body.dark-mode .About p {
-  @apply text-gray-200;
+/* --------------------
+   📦 Cards / Containers
+-------------------- */
+.Container,
+.Stack-Container,
+.Projects-Container,
+.Services-Container,
+.Stack-Elements,
+.Footer {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-body.dark-mode .Container {
-  background-color: rgb(0, 11, 21);
+/* --------------------
+   📝 Typography
+-------------------- */
+h1,
+h2,
+h3 {
+  color: var(--text-main);
 }
 
-body.dark-mode .Stack h1 {
-  @apply text-white;
+p {
+  color: var(--text-muted);
 }
 
-body.dark-mode .Stack p {
-  @apply text-white;
+/* --------------------
+   🎯 Highlights
+-------------------- */
+.Role-Text {
+  color: var(--primary);
 }
 
-body.dark-mode .Stack-Container {
- background-color: rgb(0, 11, 21);
+.Enjoy-text {
+  @apply text-gray-100;
 }
 
-body.dark-mode .Projects h1 {
-  @apply text-white;
+.Offer p,
+.Services p {
+  color: var(--text-muted);
 }
 
-body.dark-mode .Projects-Container {
-  background-color: rgb(0, 11, 21);
+/* --------------------
+   🖼️ Media
+-------------------- */
+.Image-Border {
+  border: 1px solid var(--border);
 }
 
-body.dark-mode .Projects-Container h2 {
-  @apply text-white;
+/* --------------------
+   🧾 Inputs
+-------------------- */
+::placeholder {
+  color: var(--primary);
+  font-weight: 500;
 }
 
-body.dark-mode .Projects-Container p {
-  @apply text-gray-300;
+.Input {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.75rem;
+  transition: all 0.2s ease;
 }
 
-body.dark-mode .Offer h1{
-  @apply text-white
+.Input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
 }
 
-body.dark-mode .Offer p{
-  @apply text-gray-400
+/* --------------------
+   🦶 Footer
+-------------------- */
+.Footer p {
+  color: var(--text-muted);
 }
 
-body.dark-mode .Contact h1{
-  @apply text-white
-}
-
-body.dark-mode .Image-Border {
-  @apply border-gray-800
-}
-
-body.dark-mode .Role-Text{
-  @apply text-gray-300
-}
-
-body.dark-mode .Enjoy-text{
-  @apply text-gray-100
-}
-
-body.dark-mode .Input{
-  @apply focus:border-blue-900
-}
-
-body.dark-mode .Home h1{
-  @apply text-white
-}
-
-body.dark-mode .Services h1{
-  @apply text-white
-}
-
-body.dark-mode .Services h3{
-  @apply text-white
-}
-
-body.dark-mode .Services p{
-  @apply text-gray-400
-}
-
-body.dark-mode .Services-Container{
-  background-color: rgb(0, 11, 21);
-}
-
-body.dark-mode .Footer{
-  background-color: rgb(0, 11, 21);
-  color: white;
-}
-
-body.dark-mode .Stack-Elements{
-  background-color: rgb(0, 11, 21);
-}
-
-body.dark-mode .Footer p{
-  @apply text-white
-}
-
-:-webkit-scrollbar {
+/* --------------------
+   🧭 Scrollbar
+-------------------- */
+::-webkit-scrollbar {
   width: 6px;
-  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -133,38 +158,49 @@ body.dark-mode .Footer p{
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(100, 100, 100, 0.4);
+  background-color: rgba(59, 130, 246, 0.35);
   border-radius: 10px;
-  transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(59, 130, 246, 0.65);
 }
 
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(100, 100, 100, 0.4) transparent;
+  scrollbar-color: rgba(59, 130, 246, 0.4) transparent;
 }
 
 /* --------------------
-   ✅ Custom Animations
+   ✨ Animations
 -------------------- */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fadeIn {
-  animation: fadeIn 1s ease forwards;
+  animation: fadeIn 0.7s ease forwards;
 }
 
 .animate-fadeUp {
-  animation: fadeUp 0.8s ease forwards;
+  animation: fadeUp 0.6s ease forwards;
 }

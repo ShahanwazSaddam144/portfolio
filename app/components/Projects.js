@@ -17,43 +17,55 @@ const projects = [
     Heading: "Digital Website",
     Text: "A modern digital platform built with Next.js and Tailwind CSS. Features dynamic routing, SEO optimization, and a fully responsive UI.",
     demoLink: "https://digital-x.buttnetworks.com/",
-    image: "/Home.png",
+    image: "/Digital/Home.png",
     technologies: ["Next.js", "Tailwind CSS", "Node JS", "Express", "Mongo DB"],
   },
   {
     Heading: "Business Website",
     Text: "A professional business website with features like Dark-Mode and Contact Form built using React, Node.js, Express, and MongoDB for full-stack functionality.",
     demoLink: "https://buttnetworks.com/",
-    image: "/ButtHome.png",
+    image: "/Buttnetworks/ButtHome.png",
     technologies: ["Next JS", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
   },
   {
     Heading: "Mobile E-Commerce App",
     Text: "An interactive e-commerce application with multiple categories, real-time products, and auth system.",
-    demoLink: "/BoltForm.apk",
-    image: "/light-shop.png",
-    technologies: ["React-Native", "Async-Storage", "Node.Js", "Express.js", "MongoDB"],
+    demoLink: "/ApkFiles/BoltForm.apk",
+    image: "/Boltform/BoltformHome.jpeg",
+    technologies: [
+      "React-Native",
+      "Async-Storage",
+      "Node.Js",
+      "Express.js",
+      "MongoDB",
+    ],
   },
   {
     Heading: "Portfolio Website",
     Text: "A professional portfolio website with features like Dark-Mode and Contact Form built using for full-stack functionality.",
     demoLink: "https://syedzeeshanhaider.netlify.app/",
-    image: "/portfoliohome.png",
+    image: "/Portfolio/portfoliohome.png",
     technologies: ["Next.JS", "Tailwind CSS"],
   },
   {
     Heading: "Admin Panel",
     Text: "A comprehensive admin panel designed to manage website content, user interactions, and settings efficiently, featuring full-stack functionality and a responsive interface.",
     demoLink: "https://github.com/ShahanwazSaddam144/admin-panel",
-    image: "/adminhome.png",
-    technologies: ["Next.JS", "Tailwind CSS", "Node.JS", "Express.JS", "MongoDB"],
+    image: "/Adminpanel/adminhome.png",
+    technologies: [
+      "Next.JS",
+      "Tailwind CSS",
+      "Node.JS",
+      "Express.JS",
+      "MongoDB",
+    ],
   },
 ];
 
 const Projects = () => {
   return (
     <section
-      className="Projects justify-center items-center mt-20 px-4 md:px-16 mb-10"
+      className="Projects justify-center items-center mt-20 px-4 mb-10"
       id="Projects"
     >
       <h1 className="text-center font-extrabold text-[35px] text-gray-800 mb-10">
@@ -75,14 +87,14 @@ const Projects = () => {
       >
         {projects.map((project, index) => (
           <SwiperSlide key={index} className="flex">
-            <div className="Projects-Container bg-gray-100 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 p-6 flex flex-col h-full">
-              
-              <div className="relative w-full h-48 mb-4">
+            <div className="Projects-Container bg-gray-100 rounded-xl p-6 flex flex-col h-140">
+              <div className="relative w-full mb-4">
                 <Image
                   src={project.image}
                   alt={project.Heading}
-                  fill
-                  className="rounded-lg object-cover"
+                  width={project.image === "/BoltformHome.jpeg" ? 110 : 300}
+                  height={project.image === "/BoltformHome.jpeg" ? 100 : 300}
+                  className="object-cover block m-auto"
                 />
               </div>
 
@@ -135,7 +147,6 @@ const Projects = () => {
                   </a>
                 )}
               </div>
-
             </div>
           </SwiperSlide>
         ))}

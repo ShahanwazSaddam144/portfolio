@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="Footer bg-gray-100 text-gray-800 py-8 mt-20">
+    <footer className="Footer bg-gray-100 text-gray-600 py-8 mt-20">
       <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between">
         
         {/* Left: Name or Logo */}
