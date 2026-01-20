@@ -58,7 +58,7 @@ export const projects = [
     Text: "Built a performant e-commerce demo that demonstrates secure checkout, mobile-first UX, and an admin view — ideal as an MVP for small businesses.",
     demoLink: "https://github.com/ShahanwazSaddam144/admin-panel",
     Repo: "https://github.com/ShahanwazSaddam144/Key---Chains",
-    image: "/ProjectImages/keyChains.png",
+    image: "/ProjectImages/KeyChains.png",
     technologies: [
       "Next.JS",
       "Tailwind CSS",
