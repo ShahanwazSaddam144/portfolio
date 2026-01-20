@@ -24,7 +24,7 @@ const techStacks = [
 ];
 
 const Home_ = () => {
-  /* MAIN TYPEWRITER */
+
   const [text, setText] = useState("");
   const [msgIndex, setMsgIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -92,17 +92,16 @@ const Home_ = () => {
 
   return (
     <>
-      <section className="mt-10 sm:mt-30 px-4 sm:px-8 mb-15 lg:px-16">
-        <div className="flex flex-col sm:flex-col md:flex-row justify-between items-center gap-10">
+      <section className="mt-15 px-4 sm:px-8 mb-15 lg:px-16">
+        <div className="flex flex-col justify-center items-center gap-10">
 
           {/* IMAGE */}
           <Image
             src="/developer.jpg"
             alt="Developer Image"
-            width={280}
-            height={280}
-            className="mt-10 rounded-full border-4 border-blue-900 shadow-xl
-            w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[260px] md:h-[260px] lg:w-[300px] lg:h-[300px]
+            width={180}
+            height={180}
+            className="mt-10 rounded-full border-4 border-blue-900 shadow-xl w-[180px] h-[180px]
             opacity-0 animate-fadeZoom"
           />
 
@@ -116,37 +115,27 @@ const Home_ = () => {
             {/* Line */}
             <div className="sm:block m-auto w-full h-1 bg-blue-700 mb-2"></div>
 
+            {/* DESCRIPTION */}
+            <p className="text-center text-gray-600 text-[15px] sm:text-[18px] mt-5 font-bold mb-4">
+              I build fast, reliable web apps that scale with your product.
+            </p>
+
+
             {/* ROLE TYPEWRITER */}
-            <h1 className="mt-3 font-bold text-[18px] sm:text-[20px] md:text-[22px] text-gray-700 mb-3">
+            <h1 className=" text-center mt-3 font-bold text-[18px] sm:text-[20px] md:text-[22px] text-gray-700 mb-3">
               <span className="Role-Text border-r-2 border-blue-600 pr-1 animate-caret">
                 {text}
               </span>
             </h1>
 
-            {/* DESCRIPTION */}
-            <p className="text-gray-600 text-[14px] sm:text-[15px] md:text-[16px] max-w-xl mb-4">
-              I am a passionate full-stack developer specializing in building
-              modern, scalable, and high-performance web & mobile applications.
-              I focus on clean UI, optimized backend systems, and smooth user
-              experiences.
-            </p>
-
-            {/* TECH STACK TYPEWRITER */}
-            <p className="text-gray-700 font-semibold mb-5">
-              Tech Stack:{" "}
-              <span className="text-blue-700 border-r-2 border-blue-600 pr-1 animate-caret">
-                {techText}
-              </span>
-            </p>
-
             {/* BUTTONS */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center">
+            <div className="flex flex-col justify-center sm:flex-row gap-3 sm:gap-5 items-center">
               <Link href="/">
                 <button
                   className="bg-gradient-to-r from-blue-600 to-blue-800 
                   px-6 py-2 rounded-md text-white cursor-pointer font-bold 
                   hover:scale-105 hover:shadow-lg transform transition-all duration-300 
-                  focus:outline-none focus:ring-2 focus:ring-blue-500 animate-fadeIn"
+                  focus:outline-none focus:ring-2 focus:ring-blue-500 animate-fadeIn "
                 >
                   View More
                 </button>

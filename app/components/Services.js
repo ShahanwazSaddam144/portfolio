@@ -92,7 +92,7 @@ const Services = () => {
         >
           {services.map((service, index) => (
             <SwiperSlide key={index} className="flex">
-              <div className="Services-Container h-full w-[280px] mb-20 sm:w-[320px] cursor-pointer bg-gray-100 p-6 rounded-2xl shadow-md flex flex-col items-center text-center hover:shadow-lg hover:scale-105 transition-all duration-300 mx-auto">
+              <div className="Services-Container h-[350px] w-[280px] mb-20 sm:w-[320px] cursor-pointer bg-gray-100 p-6 rounded-2xl  flex flex-col items-center text-center sm:hover:shadow-2xl active:shadow-2xl mx-auto">
                 
                 <service.Icon className="w-12 h-12 text-blue-700" />
 
@@ -104,7 +104,7 @@ const Services = () => {
                   {service.Service}
                 </p>
 
-                <ul className="mt-4 text-sm text-gray-700 space-y-1">
+                <ul className="Services-Details mt-4 text-sm text-gray-700 space-y-1">
                   {service.Details.map((item, i) => (
                     <li key={i}>• {item}</li>
                   ))}

@@ -109,6 +109,10 @@ p {
   color: var(--text-muted);
 }
 
+ body.dark-mode .Services-Details{
+  @apply text-gray-300
+}
+
 /* --------------------
    🖼️ Media
 -------------------- */
