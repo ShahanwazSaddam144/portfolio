@@ -20,11 +20,10 @@ const techStacks = [
   "Tailwind CSS",
   "SQL",
   "C Language",
-  "C++ Language"
+  "C++ Language",
 ];
 
 const Home_ = () => {
-
   const [text, setText] = useState("");
   const [msgIndex, setMsgIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -94,7 +93,6 @@ const Home_ = () => {
     <>
       <section className="mt-15 px-4 sm:px-8 mb-15 lg:px-16">
         <div className="flex flex-col justify-center items-center gap-10">
-
           {/* IMAGE */}
           <Image
             src="/developer.jpg"
@@ -120,11 +118,25 @@ const Home_ = () => {
               I build fast, reliable web apps that scale with your product.
             </p>
 
-
             {/* ROLE TYPEWRITER */}
-            <h1 className=" text-center mt-3 font-bold text-[18px] sm:text-[20px] md:text-[22px] text-gray-700 mb-3">
-              <span className="Role-Text border-r-2 border-blue-600 pr-1 animate-caret">
-                {text}
+            <h1 className="text-center mt-3 mb-3">
+              <span
+                className="
+                TypewriterContainer
+    inline-block
+    px-4 py-1.5
+    rounded-full
+    bg-blue-50
+    border border-blue-200
+    text-[18px] sm:text-[20px] md:text-[22px]
+    font-bold
+    text-blue-700
+    shadow-sm
+  "
+              >
+                <span className="Role-Text border-r-2 border-blue-600 pr-1 animate-caret">
+                  {text}
+                </span>
               </span>
             </h1>
 

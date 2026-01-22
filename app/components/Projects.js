@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,13 +17,6 @@ export default function Projects({ limit = 10, single = false }) {
   const displayedProjects = single
     ? projects.slice(0, 1)
     : projects.slice(0, limit);
-
-  // Track which project card is expanded
-  const [expandedIndex, setExpandedIndex] = useState(null);
-
-  const toggleExpand = (index) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
 
   return (
     <section
@@ -49,46 +42,88 @@ export default function Projects({ limit = 10, single = false }) {
       >
         {displayedProjects.map((project, index) => (
           <SwiperSlide key={index} className="flex">
-            <div className="Projects-Container bg-gray-100 rounded-xl p-6 flex flex-col h-auto">
-              <div className="relative w-full mb-4 flex justify-center">
-                <Image
-                  src={project.image}
-                  alt={project.Heading}
-                  width={300}
-                  height={300}
-                  className="object-cover"
-                />
-              </div>
+            <div className="Projects-Container bg-gray-100 rounded-xl p-6 flex flex-col h-full shadow-md hover:shadow-xl transition">
 
-              <h2 className="font-bold text-2xl mb-2 text-gray-900">
-                {project.Heading}
-              </h2>
+              {/* Image (Clickable via slug) */}
+              <Link href={`/projects/${project.slug}`}>
+                <div className="relative w-full mb-4 flex justify-center cursor-pointer">
+                  <Image
+                    src={project.image}
+                    alt={project.Heading}
+                    width={300}
+                    height={300}
+                    className="object-cover rounded-lg"
+                  />
+                </div>
+              </Link>
 
-              <p className="text-gray-700 mb-2">{project.Text}</p>
+              {/* Title (Clickable via slug) */}
+              <Link href={`/projects/${project.slug}`}>
+                <h2 className="font-bold text-2xl mb-2 text-gray-900 hover:text-blue-700 transition cursor-pointer">
+                  {project.Heading}
+                </h2>
+              </Link>
 
-              <div className="flex flex-wrap gap-2 mt-4 mb-4">
-                {project.technologies.map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-semibold"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+              {/* Description */}
+              <p className="text-gray-700 mb-4">
+                {project.Text}
+              </p>
+{/* Tech Stack */}
+<div className="flex flex-wrap gap-2 mb-3">
+  {project.technologies.map((tech, idx) => (
+    <span
+      key={idx}
+      className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold"
+    >
+      {tech}
+    </span>
+  ))}
+</div>
 
-              <div className="mt-auto flex gap-3 flex-wrap mb-2">
+{/* Project Meta Info */}
+<div className="text-sm text-gray-600 space-y-1 mb-5">
+  <p>
+    <span className="font-semibold">Author:</span> {project.author}
+  </p>
+
+  <p>
+    <span className="font-semibold">Role:</span> {project.role}
+  </p>
+
+  <p>
+    <span className="font-semibold">Duration:</span>{" "}
+    {project.startDate} – {project.endDate}
+  </p>
+
+  <p className="flex items-center gap-2">
+    <span className="font-semibold">Status:</span>
+    <span
+      className={`px-2 py-0.5 rounded-full text-xs font-bold
+        ${
+          project.status === "Completed"
+            ? "bg-green-100 text-green-700"
+            : project.status === "In Progress"
+            ? "bg-yellow-100 text-yellow-700"
+            : "bg-blue-100 text-blue-700"
+        }`}
+    >
+      {project.status}
+    </span>
+  </p>
+</div>
+
+
+              {/* Buttons */}
+              <div className="mt-auto flex gap-3 flex-wrap">
                 {project.demoLink && (
                   <a
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gradient-to-r from-blue-600 to-blue-800 px-5 py-2 rounded text-white font-bold"
+                    className="bg-gradient-to-r from-blue-600 to-blue-800 px-5 py-2 rounded-lg text-white font-bold hover:opacity-90 transition"
                   >
                     {project.demoLink.endsWith(".apk")
                       ? "Download App"
-                      : project.Heading === "Admin Panel"
-                      ? "View Code"
                       : "Live Demo"}
                   </a>
                 )}
@@ -98,33 +133,13 @@ export default function Projects({ limit = 10, single = false }) {
                     href={project.Repo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="border-2 border-blue-700 text-blue-700 px-5 py-2 rounded font-bold hover:bg-blue-700 hover:text-white transition"
+                    className="border-2 border-blue-700 text-blue-700 px-5 py-2 rounded-lg font-bold hover:bg-blue-700 hover:text-white transition"
                   >
                     Repo
                   </a>
                 )}
               </div>
 
-              {/* ✅ Case Study Toggle */}
-              <button
-                onClick={() => toggleExpand(index)}
-                className="mt-2 text-left text-blue-600 hover:underline font-semibold inline-block"
-              >
-                Case Study {expandedIndex === index ? "▲" : "▼"}
-              </button>
-
-              {/* ✅ Expanded details */}
-              {expandedIndex === index && (
-                <div className="mt-4 text-gray-800 space-y-2 border-t pt-3">
-                  <div><span className="font-bold">Author:</span> {project.author}</div>
-                  <div><span className="font-bold">Email:</span> {project.email}</div>
-                  <div><span className="font-bold">Role:</span> {project.role}</div>
-                  <div><span className="font-bold">Category:</span> {project.category}</div>
-                  <div><span className="font-bold">Status:</span> {project.status}</div>
-                  <div><span className="font-bold">Start Date:</span> {project.startDate}</div>
-                  <div><span className="font-bold">End Date:</span> {project.endDate}</div>
-                </div>
-              )}
             </div>
           </SwiperSlide>
         ))}
