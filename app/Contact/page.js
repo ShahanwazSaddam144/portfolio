@@ -23,7 +23,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/Contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -72,7 +72,7 @@ const Contact = () => {
             <div className="Container flex flex-col justify-between bg-gray-100 rounded-xl px-6 py-5 shadow-md hover:shadow-lg transition-shadow duration-300 w-full md:w-1/2">
               <div className="flex items-center gap-3">
                 <Mail className="text-blue-600" />
-                <p className="text-lg font-medium break-all">
+                <p className="text-[16px] font-medium break-all sm:text-lg">
                   shahnawazsaddamb@gmail.com
                 </p>
               </div>
