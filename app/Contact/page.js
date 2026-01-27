@@ -23,7 +23,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("https://shahnawaz.buttnetworks.com/api/Contact", {
+      const res = await fetch("/api/Contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
