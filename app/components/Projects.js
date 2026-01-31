@@ -43,7 +43,6 @@ export default function Projects({ limit = 10, single = false }) {
         {displayedProjects.map((project, index) => (
           <SwiperSlide key={index} className="flex">
             <div className="Projects-Container bg-gray-100 rounded-xl p-6 flex flex-col h-full shadow-md hover:shadow-xl transition">
-
               {/* Image (Clickable via slug) */}
               <Link href={`/projects/${project.slug}`}>
                 <div className="relative w-full mb-4 flex justify-center cursor-pointer">
@@ -65,53 +64,51 @@ export default function Projects({ limit = 10, single = false }) {
               </Link>
 
               {/* Description */}
-              <p className="text-gray-700 mb-4">
-                {project.Text}
-              </p>
-{/* Tech Stack */}
-<div className="flex flex-wrap gap-2 mb-3">
-  {project.technologies.map((tech, idx) => (
-    <span
-      key={idx}
-      className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold"
-    >
-      {tech}
-    </span>
-  ))}
-</div>
+              <p className="text-gray-700 mb-4">{project.Text}</p>
+              {/* Tech Stack */}
+              <div className="flex flex-wrap gap-2 mb-3">
+                {project.technologies.map((tech, idx) => (
+                  <span
+                    key={idx}
+                    className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
 
-{/* Project Meta Info */}
-<div className="text-sm text-gray-600 space-y-1 mb-5">
-  <p>
-    <span className="font-semibold">Author:</span> {project.author}
-  </p>
+              {/* Project Meta Info */}
+              <div className="text-sm text-gray-600 space-y-1 mb-5">
+                <p>
+                  <span className="font-semibold">Author:</span>{" "}
+                  {project.author}
+                </p>
 
-  <p>
-    <span className="font-semibold">Role:</span> {project.role}
-  </p>
+                <p>
+                  <span className="font-semibold">Role:</span> {project.role}
+                </p>
 
-  <p>
-    <span className="font-semibold">Duration:</span>{" "}
-    {project.startDate} – {project.endDate}
-  </p>
+                <p>
+                  <span className="font-semibold">Duration:</span>{" "}
+                  {project.startDate} – {project.endDate}
+                </p>
 
-  <p className="flex items-center gap-2">
-    <span className="font-semibold">Status:</span>
-    <span
-      className={`px-2 py-0.5 rounded-full text-xs font-bold
+                <p className="flex items-center gap-2">
+                  <span className="font-semibold">Status:</span>
+                  <span
+                    className={`px-2 py-0.5 rounded-full text-xs font-bold
         ${
           project.status === "Completed"
             ? "bg-green-100 text-green-700"
             : project.status === "In Progress"
-            ? "bg-yellow-100 text-yellow-700"
-            : "bg-blue-100 text-blue-700"
+              ? "bg-yellow-100 text-yellow-700"
+              : "bg-blue-100 text-blue-700"
         }`}
-    >
-      {project.status}
-    </span>
-  </p>
-</div>
-
+                  >
+                    {project.status}
+                  </span>
+                </p>
+              </div>
 
               {/* Buttons */}
               <div className="mt-auto flex gap-3 flex-wrap">
@@ -139,7 +136,6 @@ export default function Projects({ limit = 10, single = false }) {
                   </a>
                 )}
               </div>
-
             </div>
           </SwiperSlide>
         ))}

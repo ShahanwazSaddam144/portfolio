@@ -46,19 +46,19 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="Container bg-gray-50 rounded-2xl shadow-xl p-6 text-center transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-105 animate-float">
               <h2 className="text-xl font-bold mb-2">⏰ Live Coding Timer</h2>
-              <h2 className="text-3xl text-blue-600 font-extrabold">{currentTime}</h2>
+              <h4 className="text-3xl text-blue-600 font-extrabold">{currentTime}</h4>
               <p className="text-sm text-gray-500 mt-2">Current time ticking live</p>
             </div>
 
             <div className="Container bg-gray-100 rounded-2xl shadow-xl p-6 text-center transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-105 animate-float">
               <h2 className="text-xl font-bold mb-2">📘 Days of Learning</h2>
-              <h2 className="text-5xl text-blue-600 font-extrabold">{learningDays}</h2>
+              <h4 className="text-5xl text-blue-600 font-extrabold">{learningDays}</h4>
               <p className="text-sm text-gray-500 mt-2">Days since starting coding journey</p>
             </div>
 
             <div className="Container bg-gray-50 rounded-2xl shadow-xl p-6 text-center md:col-span-2 transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:scale-105 animate-float">
               <h2 className="text-xl font-bold mb-2">🚀 Projects Deployed</h2>
-              <h2 className="text-5xl text-blue-600 font-extrabold">{deployedProjects}</h2>
+              <h4 className="text-5xl text-blue-600 font-extrabold">{deployedProjects}</h4>
               <p className="text-sm text-gray-500 mt-2">Live & running projects on the web</p>
             </div>
           </div>
@@ -79,22 +79,22 @@ const About = () => {
   {/* Facts */}
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
     <div className="Stack-Container bg-white shadow rounded-2xl p-6 text-center">
-      <h2 className="text-3xl font-bold text-blue-700">20+</h2>
+      <h4 className="text-3xl font-bold text-blue-700">20+</h4>
       <p className="text-gray-500 mt-1">Projects Completed</p>
     </div>
 
     <div className="Stack-Container bg-white shadow rounded-2xl p-6 text-center">
-      <h2 className="text-3xl font-bold text-blue-700">8+</h2>
+      <h4 className="text-3xl font-bold text-blue-700">8+</h4>
       <p className="text-gray-500 mt-1">Months Experience</p>
     </div>
 
     <div className="Stack-Container bg-white shadow rounded-2xl p-6 text-center">
-      <h2 className="text-3xl font-bold text-blue-700">100%</h2>
+      <h4 className="text-3xl font-bold text-blue-700">100%</h4>
       <p className="text-gray-500 mt-1">User Experience</p>
     </div>
 
     <div className="Stack-Container bg-white shadow rounded-2xl p-6 text-center">
-      <h2 className="text-3xl font-bold text-blue-700">10+</h2>
+      <h4 className="text-3xl font-bold text-blue-700">10+</h4>
       <p className="text-gray-500 mt-1">Technologies Used</p>
     </div>
   </div>
