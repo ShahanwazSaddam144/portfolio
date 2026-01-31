@@ -42,7 +42,7 @@ export default function Projects({ limit = 10, single = false }) {
       >
         {displayedProjects.map((project, index) => (
           <SwiperSlide key={index} className="flex">
-            <div className="Projects-Container bg-gray-100 rounded-xl p-6 flex flex-col h-full shadow-md hover:shadow-xl transition">
+            <div className="Projects-Container bg-gray-100 rounded-xl p-6 flex flex-col h-153 shadow-md hover:shadow-xl transition">
               {/* Image (Clickable via slug) */}
                 <div className="relative w-full mb-4 flex justify-center cursor-pointer">
                   <Image
