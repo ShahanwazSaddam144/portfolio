@@ -44,7 +44,6 @@ export default function Projects({ limit = 10, single = false }) {
           <SwiperSlide key={index} className="flex">
             <div className="Projects-Container bg-gray-100 rounded-xl p-6 flex flex-col h-full shadow-md hover:shadow-xl transition">
               {/* Image (Clickable via slug) */}
-              <Link href={`/projects/${project.slug}`}>
                 <div className="relative w-full mb-4 flex justify-center cursor-pointer">
                   <Image
                     src={project.image}
@@ -54,14 +53,11 @@ export default function Projects({ limit = 10, single = false }) {
                     className="object-cover rounded-lg"
                   />
                 </div>
-              </Link>
 
               {/* Title (Clickable via slug) */}
-              <Link href={`/projects/${project.slug}`}>
                 <h2 className="font-bold text-2xl mb-2 text-gray-900 hover:text-blue-700 transition cursor-pointer">
                   {project.Heading}
                 </h2>
-              </Link>
 
               {/* Description */}
               <p className="text-gray-700 mb-4">{project.Text}</p>
