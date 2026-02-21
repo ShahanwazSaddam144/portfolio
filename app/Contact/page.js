@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Github, Copy, Mail } from "lucide-react";
+import { Github, Copy, Mail, Send } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 
@@ -31,7 +31,7 @@ const Contact = () => {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Something went wrong 😬");
 
-      setResponseMsg("✅ Message sent!");
+      setResponseMsg("✅ Message sent successfully!");
       setFormData({ name: "", email: "", phone: "", message: "" });
       setTimeout(() => setResponseMsg(""), 3000);
     } catch (error) {
@@ -46,24 +46,59 @@ const Contact = () => {
   };
 
   return (
-    <section className="mt-20">
+    <section className="min-h-screen">
       <Navbar />
+      <style>{`
+        @keyframes slideInUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes glow {
+          0%, 100% { box-shadow: 0 0 20px rgba(34, 211, 238, 0.2); }
+          50% { box-shadow: 0 0 40px rgba(34, 211, 238, 0.5); }
+        }
+        .contact-card {
+          animation: slideInUp 0.6s ease-out forwards;
+          transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+          transform-style: preserve-3d;
+        }
+        .contact-card:hover {
+          transform: translateY(-5px) rotateX(2deg);
+          box-shadow: 0 20px 50px rgba(34, 211, 238, 0.3);
+        }
+        .form-input {
+          background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.6));
+          border: 1px solid rgba(34, 211, 238, 0.2);
+          transition: all 0.3s ease;
+        }
+        .form-input:focus {
+          border-color: rgba(34, 211, 238, 0.6);
+          box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+          background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(59, 130, 246, 0.1));
+        }
+      `}</style>
 
       <motion.section
-        className="Contact px-4 mt-20"
+        className="Contact px-4 mt-20 pb-20"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="max-w-3xl mx-auto relative">
-          <motion.h1
-            className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12"
+        <div className="max-w-5xl mx-auto">
+          {/* Header */}
+          <motion.div
+            className="text-center mb-16"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7 }}
           >
-            Contact Me
-          </motion.h1>
+            <h1 className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+              Get In Touch
+            </h1>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Have a project in mind? Let's collaborate and create something amazing together!
+            </p>
+          </motion.div>
 
           {/* ================= EMAIL & GITHUB ================= */}
           <div className="flex flex-col md:flex-row justify-center gap-6 mb-12">
@@ -119,13 +154,13 @@ const Contact = () => {
             )}
           </AnimatePresence>
 
-          {/* ================= CONTACT FORM (UNCHANGED) ================= */}
+          {/* ================= CONTACT FORM ================= */}
           <motion.form
             onSubmit={handleSubmit}
-            className="space-y-6"
+            className="space-y-6 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
           >
             <motion.input
               name="name"
@@ -135,7 +170,7 @@ const Contact = () => {
               value={formData.name}
               required
               whileFocus={{ scale: 1.02 }}
-              className="w-full border-2 rounded-md border-gray-300 focus:border-blue-600 px-3 py-2 outline-none transition duration-200"
+              className="form-input w-full px-5 py-3 rounded-lg text-gray-300 placeholder-gray-500 focus:placeholder-gray-400 outline-none"
             />
 
             <motion.input
@@ -146,7 +181,7 @@ const Contact = () => {
               value={formData.email}
               required
               whileFocus={{ scale: 1.02 }}
-              className="w-full border-2 rounded-md border-gray-300 focus:border-blue-600 px-3 py-2 outline-none transition duration-200"
+              className="form-input w-full px-5 py-3 rounded-lg text-gray-300 placeholder-gray-500 focus:placeholder-gray-400 outline-none"
             />
 
             <motion.input
@@ -157,7 +192,7 @@ const Contact = () => {
               value={formData.phone}
               required
               whileFocus={{ scale: 1.02 }}
-              className="w-full border-2 rounded-md border-gray-300 focus:border-blue-600 px-3 py-2 outline-none transition duration-200"
+              className="form-input w-full px-5 py-3 rounded-lg text-gray-300 placeholder-gray-500 focus:placeholder-gray-400 outline-none"
             />
 
             <motion.textarea
@@ -166,17 +201,18 @@ const Contact = () => {
               onChange={handleChange}
               value={formData.message}
               required
-              rows="4"
+              rows="5"
               whileFocus={{ scale: 1.02 }}
-              className="w-full border-2 rounded-md border-gray-300 focus:border-blue-600 px-3 py-2 outline-none transition duration-200 resize-none"
+              className="form-input w-full px-5 py-3 rounded-lg text-gray-300 placeholder-gray-500 focus:placeholder-gray-400 outline-none resize-none"
             />
 
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(34, 211, 238, 0.5)" }}
               whileTap={{ scale: 0.95 }}
-              className="w-full bg-gradient-to-r from-blue-600 to-blue-800 px-5 py-2 rounded-md text-white font-bold cursor-pointer transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 hover:from-cyan-400 hover:via-blue-400 hover:to-purple-500 px-6 py-3 rounded-lg text-white font-bold cursor-pointer transition-all duration-300 focus:outline-none flex items-center justify-center gap-2 group"
             >
+              <Send size={20} className="group-hover:translate-x-1 transition-transform" />
               Send Message
             </motion.button>
           </motion.form>

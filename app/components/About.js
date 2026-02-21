@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { User, Sparkles, Code2, Mail, ArrowRight } from "lucide-react";
+import { Sparkles, Code2, Mail, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const skills = [
@@ -25,7 +26,6 @@ const stats = [
 const About = () => {
   const [showPopup, setShowPopup] = useState(false);
 
-  // Close popup on ESC
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "Escape") setShowPopup(false);
@@ -47,8 +47,16 @@ const About = () => {
             transition={{ type: "spring", stiffness: 120 }}
             className="relative flex justify-center lg:justify-start lg:w-1/2 order-1"
           >
-            <div className="bg-gradient-to-br from-blue-600 to-blue-900 w-[220px] h-[220px] rounded-full flex items-center justify-center shadow-2xl">
-              <User size={110} className="text-white" />
+            {/* 👇 ONLY THIS PART CHANGED (Image Added) */}
+            <div className="bg-gradient-to-br from-blue-600 to-blue-900 w-[220px] h-[220px] rounded-full flex items-center justify-center shadow-2xl overflow-hidden">
+              <Image
+                src="/developer.jpg"
+                alt="Developer"
+                width={220}
+                height={220}
+                className="object-cover w-full h-full"
+                priority
+              />
             </div>
 
             <span className="Stack-Container absolute bottom-3 right-3 bg-white p-2 rounded-full shadow">
@@ -142,8 +150,7 @@ const About = () => {
               <h3 className="text-lg font-semibold mb-2">No Problem 🙂</h3>
 
               <p className="text-gray-600 mb-4">
-                Thanks for visiting! You can explore other sections or contact me
-                anytime.
+                Thanks for visiting! You can explore other sections or contact me anytime.
               </p>
 
               <div className="flex justify-center gap-3">

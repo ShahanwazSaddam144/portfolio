@@ -50,50 +50,81 @@ const FAQ = () => {
 
   return (
     <>
+      <style>{`
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .faq-item-enter {
+          animation: slideDown 0.3s ease-out;
+        }
+        .faq-card {
+          transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        .faq-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 15px 40px rgba(34, 211, 238, 0.15);
+        }
+      `}</style>
+
       {/* Header */}
-      <section className="mt-20">
+      <section className="mt-20 px-4 sm:px-8">
         <header className="flex justify-center flex-col items-center text-center">
-          <h1 className="text-[25px] sm:text-[40px] font-extrabold text-gray-900 dark:text-white">
+          <h1 className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
             Frequently Asked Questions
           </h1>
-          <p className="mt-3 text-gray-500 text-[16px] sm:text-[17px] font-medium">
-            Everything you need to know about my work and process.
+          <p className="mt-4 text-gray-400 text-lg sm:text-xl font-medium max-w-2xl">
+            Everything you need to know about my work, process, and how I can help your business.
           </p>
         </header>
       </section>
 
       {/* FAQ List */}
-      <section className="mt-12 flex justify-center">
-        <div className="w-full max-w-3xl space-y-4 px-4">
+      <section className="mt-16 flex justify-center pb-20">
+        <div className="w-full max-w-4xl space-y-4 px-4 sm:px-6">
           {faq.map((item, index) => (
             <div
               key={index}
-              className="Faq-Container border border-gray-700 rounded-xl bg-white transition-all"
+              className="faq-card relative group"
             >
-              {/* Question */}
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full flex justify-between items-center p-5 text-left"
-              >
-                <h1 className="font-semibold text-gray-900 text-[16px] sm:text-[18px]">
-                  {item.question}
-                </h1>
-                <ChevronDown
-                  className={`transition-transform duration-300 text-gray-500 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
+              {/* Background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-              {/* Answer */}
-              <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? "max-h-40 px-5 pb-5" : "max-h-0 px-5"
-                }`}
-              >
-                <p className="text-gray-600 dark:text-gray-400 text-[15px] leading-relaxed">
-                  {item.answer}
-                </p>
+              {/* Content */}
+              <div className="relative bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-xl border border-cyan-500/20 group-hover:border-cyan-500/40 rounded-2xl transition-all duration-300">
+                {/* Question */}
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full flex justify-between items-center gap-4 p-6 text-left hover:bg-cyan-500/5 transition-colors"
+                >
+                  <h1 className="font-bold text-gray-100 group-hover:text-cyan-300 text-base sm:text-lg transition-colors flex-1">
+                    {item.question}
+                  </h1>
+                  <ChevronDown
+                    className={`w-6 h-6 text-cyan-400 flex-shrink-0 transition-all duration-300 ${
+                      openIndex === index ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {/* Answer */}
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openIndex === index ? "max-h-96" : "max-h-0"
+                  }`}
+                >
+                  <div className={`px-6 pb-6 border-t border-cyan-500/10 faq-item-enter ${openIndex === index ? '' : 'hidden'}`}>
+                    <p className="text-gray-300 text-base leading-relaxed">
+                      {item.answer}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

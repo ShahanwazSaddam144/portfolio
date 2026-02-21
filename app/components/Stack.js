@@ -102,15 +102,53 @@ const skillColors = {
 // ================= COMPONENT =================
 const Skills = () => {
   return (
-    <section id="skills" className="py-16 px-5 max-w-7xl mx-auto">
-      <h1 className="text-4xl font-bold text-center mb-14">
-        💼 Tech Stack
-      </h1>
+    <section id="skills" className="py-20 px-5 max-w-7xl mx-auto">
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-12px); }
+        }
+        @keyframes glow {
+          0%, 100% { box-shadow: 0 0 20px rgba(34, 211, 238, 0.2); }
+          50% { box-shadow: 0 0 50px rgba(34, 211, 238, 0.5); }
+        }
+        @keyframes slideInUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .skill-card {
+          animation: slideInUp 0.6s ease-out forwards;
+          transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+          transform-style: preserve-3d;
+        }
+        .skill-card:hover {
+          transform: rotateX(8deg) rotateY(-8deg) translateZ(20px);
+          box-shadow: 0 20px 60px rgba(34, 211, 238, 0.3);
+        }
+        .skill-item {
+          animation: float 3s ease-in-out infinite;
+          transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+          transform-style: preserve-3d;
+        }
+        .skill-item:hover {
+          transform: translateZ(15px) rotateX(5deg) rotateY(5deg);
+          box-shadow: 0 10px 30px rgba(34, 211, 238, 0.4);
+        }
+      `}</style>
+
+      <div className="text-center mb-16">
+        <h1 className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+          💼 Tech Stack
+        </h1>
+        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          Technologies and tools I specialize in for building scalable solutions
+        </p>
+      </div>
 
       {/* DESKTOP GRID */}
-      <div className="hidden md:grid md:grid-cols-2 gap-10">
+      <div className="hidden md:grid md:grid-cols-2 gap-8">
         {skillsData.map((category, idx) => (
-          <SkillCard key={idx} category={category} />
+          <SkillCard key={idx} category={category} idx={idx} />
         ))}
       </div>
 
@@ -124,7 +162,7 @@ const Skills = () => {
         >
           {skillsData.map((category, idx) => (
             <SwiperSlide key={idx}>
-              <SkillCard category={category} />
+              <SkillCard category={category} idx={idx} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -133,30 +171,44 @@ const Skills = () => {
   );
 };
 
-const SkillCard = ({ category }) => (
-  <div className="Stack-Container bg-gray-100 rounded-2xl p-6">
-    {/* Header */}
-    <div className="flex justify-between items-center mb-6">
-      <h2 className="text-2xl font-semibold">{category.title}</h2>
-      <span className="text-sm text-gray-600">
-        {category.skills.length} SKILLS
-      </span>
+const SkillCard = ({ category, idx }) => (
+  <div
+    className="skill-card p-8 rounded-2xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-cyan-500/30 hover:border-cyan-500/60 group overflow-hidden"
+    style={{ animationDelay: `${idx * 0.1}s` }}
+  >
+    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    
+    <div className="relative z-10">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+          {category.title}
+        </h2>
+        <span className="text-xs text-cyan-400/60 font-semibold">
+          {category.skills.length} SKILLS
+        </span>
+      </div>
+
+      {/* Skills Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {category.skills.map((skill, i) => (
+          <div
+            key={i}
+            className="skill-item p-4 rounded-xl bg-slate-900/60 border border-blue-500/30 hover:border-cyan-400/60 flex flex-col items-center gap-2 group/item"
+            style={{ animationDelay: `${i * 0.05}s` }}
+          >
+            <div className="text-3xl text-cyan-400 group-hover/item:text-white group-hover/item:scale-110 transition-all duration-300">
+              {skill.icon}
+            </div>
+            <p className="font-semibold text-xs text-gray-300 group-hover/item:text-cyan-300 transition-colors text-center">
+              {skill.name}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
 
-    {/* Skills Grid */}
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-      {category.skills.map((skill, i) => (
-        <div
-          key={i}
-          className="Stack-Elements border border-white bg-white rounded-xl shadow-sm p-4 flex flex-col items-center gap-2 hover:scale-105 transition"
-        >
-          <div className={`text-4xl ${skillColors[skill.name]}`}>
-            {skill.icon}
-          </div>
-          <p className="font-medium text-sm">{skill.name}</p>
-        </div>
-      ))}
-    </div>
+    {/* Glow border effect */}
+    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-500/0 via-blue-500/0 to-purple-500/0 group-hover:from-cyan-500/20 group-hover:via-blue-500/20 group-hover:to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
   </div>
 );
 
