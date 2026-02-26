@@ -82,7 +82,7 @@ export const projects = [
     slug: "keychains-website",
     Heading: "Key&Chains",
     Text: "Built a performant e-commerce demo that demonstrates secure checkout, mobile-first UX, and an admin view — ideal as an MVP for small businesses.",
-    demoLink: "https://github.com/ShahanwazSaddam144/admin-panel",
+    demoLink: "https://key-chains.buttnetworks.com/",
     Repo: "https://github.com/ShahanwazSaddam144/Key---Chains",
     image: "/ProjectImages/keychains.png",
     technologies: [
@@ -101,5 +101,30 @@ export const projects = [
     status: "Completed",
     role: "E-Commerce Developer",
     category: "E-Commerce MVP",
+  },
+ {
+    slug: "ecotracker-website",
+    Heading: "EcoTracker",
+    Text: "Built an eco-conscious tracking platform that helps users monitor, track sustainable habits, and visualize carbon footprint data through an intuitive, mobile-first interface — designed as a scalable MVP to promote greener.",
+    demoLink: "https://eco.buttnetworks.com/",
+    Repo: "https://github.com/ShahanwazSaddam144/eco-tracker",
+    image: "/ProjectImages/Thumbnail.png",
+    technologies: [
+      "Next.JS",
+      "Tailwind CSS",
+      "Node.JS",
+      "Express.JS",
+      "MongoDB",
+      "JWT Tokens"
+    ],
+
+    // ➕ Added details
+    author: "Shahnawaz Saddam Butt",
+    email: "shahnawaz@example.com",
+    startDate: "2024-05-11",
+    endDate: "2024-06-17",
+    status: "Completed",
+    role: "EcoSystem Developer",
+    category: "Enviroment MVP",
   },
 ];
