@@ -60,7 +60,7 @@ export default function Projects({ limit = 10, single = false }) {
                 </h2>
 
               {/* Description */}
-              <p className="text-gray-700 mb-4">{project.Text}</p>
+              <p className="text-gray-500 mb-4">{project.Text}</p>
               {/* Tech Stack */}
               <div className="flex flex-wrap gap-2 mb-3">
                 {project.technologies.map((tech, idx) => (

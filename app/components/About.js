@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Sparkles, Code2, Mail, ArrowRight } from "lucide-react";
+import { Sparkles, Code2, Mail, ArrowRight, Trophy } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -36,18 +36,14 @@ const About = () => {
 
   return (
     <>
-      {/* MAIN SECTION */}
       <section className="mt-24 max-w-6xl mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-14">
-
-          {/* LEFT SIDE – LOGO / AVATAR */}
           <motion.div
             initial={{ scale: 0.85, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring", stiffness: 120 }}
             className="relative flex justify-center lg:justify-start lg:w-1/2 order-1"
           >
-            {/* 👇 ONLY THIS PART CHANGED (Image Added) */}
             <div className="bg-gradient-to-br from-blue-600 to-blue-900 w-[220px] h-[220px] rounded-full flex items-center justify-center shadow-2xl overflow-hidden">
               <Image
                 src="/developer.jpg"
@@ -64,7 +60,6 @@ const About = () => {
             </span>
           </motion.div>
 
-          {/* RIGHT SIDE – CONTENT */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6 lg:w-1/2 order-2">
             <motion.h2
               initial={{ y: 10, opacity: 0 }}
@@ -79,8 +74,7 @@ const About = () => {
               my skills, projects, and journey?
             </p>
 
-            {/* STATS */}
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-wrap justify-center lg:justify-start">
               {stats.map((s) => (
                 <div
                   key={s.label}
@@ -94,7 +88,6 @@ const About = () => {
               ))}
             </div>
 
-            {/* SKILLS */}
             <div className="flex flex-wrap gap-2">
               {skills.map((skill) => (
                 <span
@@ -106,7 +99,6 @@ const About = () => {
               ))}
             </div>
 
-            {/* BUTTONS */}
             <div className="flex gap-4 pt-2">
               <Link href="/About">
                 <button className="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-3 rounded-xl text-white font-bold flex items-center gap-2 hover:scale-105 hover:shadow-lg transition">
@@ -121,11 +113,27 @@ const About = () => {
                 Not Interested
               </button>
             </div>
+
+            <Link href="#Projects" className="w-full">
+              <div className="mt-6 w-full cursor-pointer bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500 rounded-2xl p-5 shadow-xl border border-yellow-600/40 hover:scale-[1.02] transition flex items-center gap-4">
+                <Trophy className="text-yellow-900" size={28} />
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-yellow-900/90">
+                    Hackathon Project
+                  </p>
+                  <h3 className="text-xl font-bold text-yellow-900">
+                    EcoTracker
+                  </h3>
+                  <p className="text-sm text-yellow-900">
+                    Rank 37 / 775 participants
+                  </p>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* POPUP */}
       <AnimatePresence>
         {showPopup && (
           <motion.div

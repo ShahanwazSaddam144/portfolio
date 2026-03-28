@@ -9,12 +9,16 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
-    message: "",
+    budget: "",
+    timeline: "",
+    service: "Custom Solution",
+    projectDetails: "",
   });
 
   const [responseMsg, setResponseMsg] = useState("");
   const [showCopyPopup, setShowCopyPopup] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState({ show: false, message: "", type: "" });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,8 +26,9 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     try {
-      const res = await fetch("/api/Contact", {
+      const res = await fetch("/api/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -31,11 +36,14 @@ const Contact = () => {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Something went wrong 😬");
 
-      setResponseMsg("✅ Message sent successfully!");
-      setFormData({ name: "", email: "", phone: "", message: "" });
-      setTimeout(() => setResponseMsg(""), 3000);
+      setToast({ show: true, message: "✅ Quote request sent successfully!", type: "success" });
+      setFormData({ name: "", email: "", budget: "", timeline: "", service: "Custom Solution", projectDetails: "" });
+      setTimeout(() => setToast({ show: false, message: "", type: "" }), 4000);
     } catch (error) {
-      alert(error.message || "Failed to send message.");
+      setToast({ show: true, message: `❌ ${error.message}`, type: "error" });
+      setTimeout(() => setToast({ show: false, message: "", type: "" }), 4000);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -87,57 +95,109 @@ const Contact = () => {
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <motion.div
-            className="text-center mb-16"
+            className="text-left mb-16"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7 }}
           >
-            <h1 className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-              Get In Touch
+            <h1 className="text-5xl mt-30 sm:text-6xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+              Got an idea? Let&apos;s ship it.
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Have a project in mind? Let's collaborate and create something amazing together!
+            <p className="text-xl text-gray-400 max-w-2xl">
+              I&apos;m Shahnawaz — a full-stack developer who turns rough ideas into production-ready products. Tell me what you&apos;re building.
             </p>
           </motion.div>
 
-          {/* ================= EMAIL & GITHUB ================= */}
-          <div className="flex flex-col md:flex-row justify-center gap-6 mb-12">
+          {/* Contact Icons */}
+          <motion.div
+            className="flex gap-6 mb-12"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <motion.button
+              onClick={() => handleCopy("shahnawazsaddamb@gmail.com")}
+              className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-cyan-500/30 hover:border-cyan-500/60 transition-all duration-300 group"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Mail className="w-6 h-6 text-cyan-400 group-hover:text-cyan-300 transition-colors" />
+            </motion.button>
 
-            {/* Email */}
-            <div className="Container flex flex-col justify-between bg-gray-100 rounded-xl px-6 py-5 shadow-md hover:shadow-lg transition-shadow duration-300 w-full md:w-1/2">
+            <motion.a
+              href="https://github.com/ShahanwazSaddam144"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-purple-500/30 hover:border-purple-500/60 transition-all duration-300 group"
+              whileHover={{ scale: 1.1, rotate: -5 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Github className="w-6 h-6 text-purple-400 group-hover:text-purple-300 transition-colors" />
+            </motion.a>
+          </motion.div>
+
+          {/* ================= REQUEST A QUOTE ================= */}
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <h2 className="text-3xl font-bold text-white mb-2">Request a quote</h2>
+            <p className="text-gray-400">What do you need?</p>
+          </motion.div>
+
+          {/* Service Options */}
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {["Full-Stack Web App", "Backend & APIs", "SEO & Performance", "E-commerce Store", "Custom Solution"].map((service, idx) => (
+              <motion.button
+                key={service}
+                onClick={() => setFormData({ ...formData, service })}
+                className={`p-4 rounded-xl border transition-all duration-300 transform hover:scale-105 ${
+                  formData.service === service
+                    ? "border-cyan-400 bg-cyan-500/20 text-cyan-300 shadow-lg shadow-cyan-500/30"
+                    : "border-gray-600 bg-slate-800/50 text-gray-300 hover:border-cyan-400/50"
+                }`}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {service}
+              </motion.button>
+            ))}
+          </motion.div>
+
+          {/* Working with me */}
+          <motion.div
+            className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-cyan-500/30 rounded-2xl p-6 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <h3 className="text-2xl font-bold text-white mb-4">Working with me</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex items-center gap-3">
-                <Mail className="text-blue-600" />
-                <p className="text-[16px] font-medium break-all sm:text-lg">
-                  shahnawazsaddamb@gmail.com
-                </p>
+                <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                <span className="text-gray-300">Reply within 24 hours</span>
               </div>
-
-              <button
-                onClick={() => handleCopy("shahnawazsaddamb@gmail.com")}
-                className="mt-4 flex items-center justify-center gap-1 bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded-md text-white font-medium transition duration-200"
-              >
-                <Copy size={16} />
-                Copy Email
-              </button>
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                <span className="text-gray-300">MVPs shipped in weeks, not months</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                <span className="text-gray-300">Full ownership from design to deploy</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                <span className="text-gray-300">Clean code, tested & maintainable</span>
+              </div>
             </div>
-
-            {/* GitHub */}
-            <div className="Container flex flex-col justify-between items-center bg-gray-100 rounded-xl px-6 py-5 shadow-md hover:shadow-lg transition-shadow duration-300 w-full md:w-1/2">
-              <a
-                href="https://github.com/ShahanwazSaddam144"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-gray-900 hover:bg-gray-700 text-white px-4 py-2 rounded-md font-medium transition duration-200"
-              >
-                <Github size={18} />
-                Visit GitHub
-              </a>
-
-              <p className="text-center italic text-gray-600 text-sm mt-4">
-                "Code is like humor. When you have to explain it, it’s bad."
-              </p>
-            </div>
-          </div>
+          </motion.div>
 
           {/* Copy Popup */}
           <AnimatePresence>
@@ -154,78 +214,129 @@ const Contact = () => {
             )}
           </AnimatePresence>
 
-          {/* ================= CONTACT FORM ================= */}
+          {/* ================= QUOTE FORM ================= */}
+          <motion.div
+            className="text-center mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <h3 className="text-2xl font-bold text-white mb-2">Tell me about your project.</h3>
+            <p className="text-gray-400">All fields optional except name & email.</p>
+          </motion.div>
+
           <motion.form
             onSubmit={handleSubmit}
             className="space-y-6 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
           >
-            <motion.input
-              name="name"
-              type="text"
-              placeholder="Enter Your Name"
-              onChange={handleChange}
-              value={formData.name}
-              required
-              whileFocus={{ scale: 1.02 }}
-              className="form-input w-full px-5 py-3 rounded-lg text-gray-300 placeholder-gray-500 focus:placeholder-gray-400 outline-none"
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <motion.input
+                name="name"
+                type="text"
+                placeholder="Your name"
+                onChange={handleChange}
+                value={formData.name}
+                required
+                whileFocus={{ scale: 1.02 }}
+                className="form-input w-full px-5 py-3 rounded-lg text-gray-300 placeholder-gray-500 focus:placeholder-gray-400 outline-none"
+              />
 
-            <motion.input
-              name="email"
-              type="email"
-              placeholder="Enter Your Email"
-              onChange={handleChange}
-              value={formData.email}
-              required
-              whileFocus={{ scale: 1.02 }}
-              className="form-input w-full px-5 py-3 rounded-lg text-gray-300 placeholder-gray-500 focus:placeholder-gray-400 outline-none"
-            />
+              <motion.input
+                name="email"
+                type="email"
+                placeholder="Your email"
+                onChange={handleChange}
+                value={formData.email}
+                required
+                whileFocus={{ scale: 1.02 }}
+                className="form-input w-full px-5 py-3 rounded-lg text-gray-300 placeholder-gray-500 focus:placeholder-gray-400 outline-none"
+              />
+            </div>
 
-            <motion.input
-              name="phone"
-              type="text"
-              placeholder="Your Phone"
-              onChange={handleChange}
-              value={formData.phone}
-              required
-              whileFocus={{ scale: 1.02 }}
-              className="form-input w-full px-5 py-3 rounded-lg text-gray-300 placeholder-gray-500 focus:placeholder-gray-400 outline-none"
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <motion.select
+                name="budget"
+                onChange={handleChange}
+                value={formData.budget}
+                className="form-input w-full px-5 py-3 rounded-lg text-gray-300 outline-none bg-slate-800/60"
+              >
+                <option value="" disabled>Budget</option>
+                <option value="Not sure yet">Not sure yet</option>
+                <option value="$5k - $10k">$5k - $10k</option>
+                <option value="$10k - $25k">$10k - $25k</option>
+                <option value="$25k+">$25k+</option>
+              </motion.select>
+
+              <motion.select
+                name="timeline"
+                onChange={handleChange}
+                value={formData.timeline}
+                className="form-input w-full px-5 py-3 rounded-lg text-gray-300 outline-none bg-slate-800/60"
+              >
+                <option value="" disabled>Timeline</option>
+                <option value="Flexible">Flexible</option>
+                <option value="1-2 months">1-2 months</option>
+                <option value="3-6 months">3-6 months</option>
+                <option value="6+ months">6+ months</option>
+              </motion.select>
+            </div>
 
             <motion.textarea
-              name="message"
-              placeholder="Enter Your Message"
+              name="projectDetails"
+              placeholder="Project details (optional) - What are you building? Any tech preferences? What's the main goal?"
               onChange={handleChange}
-              value={formData.message}
-              required
-              rows="5"
+              value={formData.projectDetails}
+              rows="4"
               whileFocus={{ scale: 1.02 }}
               className="form-input w-full px-5 py-3 rounded-lg text-gray-300 placeholder-gray-500 focus:placeholder-gray-400 outline-none resize-none"
             />
 
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(34, 211, 238, 0.5)" }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 hover:from-cyan-400 hover:via-blue-400 hover:to-purple-500 px-6 py-3 rounded-lg text-white font-bold cursor-pointer transition-all duration-300 focus:outline-none flex items-center justify-center gap-2 group"
+              disabled={isSubmitting}
+              whileHover={!isSubmitting ? { scale: 1.05, boxShadow: "0 0 30px rgba(34, 211, 238, 0.5)" } : {}}
+              whileTap={!isSubmitting ? { scale: 0.95 } : {}}
+              className={`w-full px-6 py-3 rounded-lg text-white font-bold cursor-pointer transition-all duration-300 focus:outline-none flex items-center justify-center gap-2 group ${
+                isSubmitting
+                  ? "bg-gray-600 cursor-not-allowed opacity-50"
+                  : "bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 hover:from-cyan-400 hover:via-blue-400 hover:to-purple-500"
+              }`}
             >
-              <Send size={20} className="group-hover:translate-x-1 transition-transform" />
-              Send Message
+              {isSubmitting ? (
+                <>
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <Send size={20} className="group-hover:translate-x-1 transition-transform" />
+                  Request Quote
+                </>
+              )}
             </motion.button>
           </motion.form>
 
-          {responseMsg && (
-            <motion.p
-              className="mt-6 text-center text-green-600 font-medium"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              {responseMsg}
-            </motion.p>
-          )}
+          {/* Toast Notification */}
+          <AnimatePresence>
+            {toast.show && (
+              <motion.div
+                initial={{ opacity: 0, x: 300 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 300 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className={`fixed top-20 right-4 z-50 px-6 py-4 rounded-lg shadow-lg backdrop-blur-xl border ${
+                  toast.type === "success"
+                    ? "bg-green-500/90 border-green-400/50 text-white"
+                    : "bg-red-500/90 border-red-400/50 text-white"
+                }`}
+              >
+                <p className="font-medium">{toast.message}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </motion.section>
     </section>

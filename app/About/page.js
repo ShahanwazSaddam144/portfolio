@@ -172,7 +172,7 @@ const About = () => {
                 desc: "Mastered JavaScript, React, Node.js, Express, and MongoDB for complete full-stack solutions.",
               },
               {
-                year: "2025 (Now)",
+                year: "2026 (Now)",
                 title: "Advanced Projects & Clients",
                 desc: "Building modern apps with Next.js, Tailwind CSS, authentication systems, and advanced features.",
               },

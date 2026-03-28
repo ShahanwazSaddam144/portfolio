@@ -24,7 +24,7 @@ async function connectDB() {
   return cached.conn;
 }
 
-const ContactSchema = new mongoose.Schema(
+const QuoteSchema = new mongoose.Schema(
   {
     name: String,
     email: String,
@@ -36,8 +36,8 @@ const ContactSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Contact =
-  mongoose.models.Contact || mongoose.model("Contact", ContactSchema);
+const Quote =
+  mongoose.models.Quote || mongoose.model("Quote", QuoteSchema);
 
 export async function POST(req) {
   try {
@@ -60,7 +60,7 @@ export async function POST(req) {
       );
     }
 
-    await Contact.create({
+    await Quote.create({
       name,
       email,
       budget,
@@ -70,7 +70,7 @@ export async function POST(req) {
     });
 
     return NextResponse.json(
-      { success: true, message: "Message sent successfully" },
+      { success: true, message: "Quote request sent successfully" },
       { status: 200 }
     );
   } catch (error) {

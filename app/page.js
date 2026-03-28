@@ -6,6 +6,7 @@ import Projects from './components/Projects';
 import Offer from './components/offer';
 import Services from './components/Services';
 import FAQ from './components/FAQ';
+import Hackathon from './components/Hackathon';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
     <Stack />
     <About />
     <Projects />
+    <Hackathon />
     <Services />
     <FAQ />
     <Offer />
