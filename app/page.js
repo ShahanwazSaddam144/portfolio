@@ -7,12 +7,14 @@ import Offer from './components/offer';
 import Services from './components/Services';
 import FAQ from './components/FAQ';
 import Hackathon from './components/Hackathon';
+import GithubSection from './components/GithubSection';
 
 export default function Home() {
   return (
     <>
     <Navbar />
     <Home_ />
+    <GithubSection />
     <Stack />
     <About />
     <Projects />

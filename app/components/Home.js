@@ -139,7 +139,7 @@ const Home_ = () => {
         }
       `}</style>
 
-      <div className="w-full max-w-5xl hero-3d">
+      <div className="w-full hero-3d">
         <div className="flex flex-col justify-center items-center gap-8 md:gap-12 text-center">
 
           <div className="animate-float">
