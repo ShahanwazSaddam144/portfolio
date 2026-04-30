@@ -89,7 +89,7 @@ const Navbar = () => {
           </li>
 
           <li>
-            <Link href="/About" className="nav-link flex items-center gap-2 text-gray-300 hover:text-cyan-400 px-4 py-2 rounded-xl font-semibold hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-blue-500/10">
+            <Link href="#About" className="nav-link flex items-center gap-2 text-gray-300 hover:text-cyan-400 px-4 py-2 rounded-xl font-semibold hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-blue-500/10">
               <User2 size={18} /> About
             </Link>
           </li>
@@ -117,7 +117,7 @@ const Navbar = () => {
           </li>
 
           <li>
-            <Link href="/Contact" className="nav-link flex items-center gap-2 text-gray-300 hover:text-cyan-400 px-4 py-2 rounded-xl font-semibold hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-blue-500/10">
+            <Link href="#Contact" className="nav-link flex items-center gap-2 text-gray-300 hover:text-cyan-400 px-4 py-2 rounded-xl font-semibold hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-blue-500/10">
               <Phone size={18} /> Contact
             </Link>
           </li>
@@ -144,7 +144,7 @@ const Navbar = () => {
           </li>
 
           <li>
-            <Link href="/About" className="flex items-center justify-center gap-2 py-2 text-gray-300 hover:text-cyan-400">
+            <Link href="#About" className="flex items-center justify-center gap-2 py-2 text-gray-300 hover:text-cyan-400">
               <User2 size={18} /> About
             </Link>
           </li>
@@ -171,7 +171,7 @@ const Navbar = () => {
           </li>
 
           <li>
-            <Link href="/Contact" className="flex items-center justify-center gap-2 py-2 text-gray-300 hover:text-cyan-400">
+            <Link href="#Contact" className="flex items-center justify-center gap-2 py-2 text-gray-300 hover:text-cyan-400">
               <Phone size={18} /> Contact
             </Link>
           </li>

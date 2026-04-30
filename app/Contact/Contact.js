@@ -54,8 +54,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="min-h-screen">
-      <Navbar />
+    <section className="min-h-screen" id="Contact">
       <style>{`
         @keyframes slideInUp {
           from { opacity: 0; transform: translateY(30px); }

@@ -66,49 +66,6 @@ const Hackathon = () => {
               </div>
             </div>
           </SwiperSlide>
-
-          <SwiperSlide>
-            <div className="bg-gradient-to-br from-slate-900/90 to-slate-800/80 backdrop-blur-2xl border border-purple-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-purple-500/20 transform-gpu hover:-translate-y-1 hover:scale-[1.01] transition-all duration-500">
-              <div className="flex flex-col lg:flex-row items-center gap-8">
-                <div className="w-full lg:w-1/3">
-                  <div className="relative rounded-2xl overflow-hidden border border-purple-400/20 shadow-purple-600/20">
-                    <Image src="/ProjectImages/SignIn.png" width={340} height={340} alt="Hackathon Pending" className="w-full h-auto object-cover" />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 to-transparent p-3">
-                      <p className="text-xs tracking-widest uppercase">Result Pending</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="w-full lg:w-2/3 space-y-5">
-                  <h2 className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 bg-clip-text text-transparent">
-                    Hackathon Participation
-                  </h2>
-                  <p className="text-gray-300 leading-relaxed text-lg">
-                    Participated in another competitive hackathon with innovative problem-solving and strong full-stack implementation. Final results are currently pending.
-                  </p>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="p-4 rounded-xl border border-purple-500/30 bg-slate-800/70 backdrop-blur-md">
-                      <p className="text-sm text-gray-400 uppercase tracking-wider">Event</p>
-                      <p className="text-xl font-semibold text-purple-300">Upcoming Hack 2026</p>
-                    </div>
-                    <div className="p-4 rounded-xl border border-pink-500/30 bg-slate-800/70 backdrop-blur-md">
-                      <p className="text-sm text-gray-400 uppercase tracking-wider">Status</p>
-                      <p className="text-xl font-semibold text-pink-300">Pending</p>
-                    </div>
-                  </div>
-
-                  <p className="text-gray-400">
-                    The project focuses on delivering scalable architecture, engaging UI, and optimized performance under real-world constraints.
-                  </p>
-
-                  <button className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 text-white font-semibold shadow-lg shadow-purple-500/30 cursor-not-allowed">
-                    Awaiting Results
-                  </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
         </Swiper>
       </div>
     </section>
