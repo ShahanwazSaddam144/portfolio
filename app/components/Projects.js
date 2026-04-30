@@ -131,6 +131,7 @@ export default function Projects({ limit = 10, single = false }) {
                     Repo
                   </a>
                 )}
+                <Link href={`/projects/${project.slug}`} className="ml-auto bg-gradient-to-r from-cyan-500 to-indigo-600 text-white px-4 py-2 rounded-lg font-bold hover:scale-[1.02] transform will-change-transform transition-shadow shadow-lg">Read more</Link>
               </div>
             </div>
           </SwiperSlide>
