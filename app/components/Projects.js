@@ -40,22 +40,28 @@ export default function Projects({ limit = 10, single = false }) {
           <SwiperSlide key={index} className="flex">
             <div className="Projects-Container bg-gray-100 rounded-xl p-6 flex flex-col h-153 shadow-md hover:shadow-xl transition w-full">
 
+              {/* ✅ IMAGE SWIPER (IMPROVED ONLY HERE) */}
               <div className="relative w-full mb-4 flex justify-center">
                 <Swiper
-                  modules={[Pagination, Autoplay]}
+                  modules={[Pagination, Autoplay, Navigation]}
                   slidesPerView={1}
                   pagination={{ clickable: true }}
+                  navigation
                   autoplay={{ delay: 2500, disableOnInteraction: false }}
+                  loop={true}
+                  className="w-full"
                 >
-                  {(Array.isArray(project.image) ? project.image : [project.image]).map((img, i) => (
+                  {(project.gallery && project.gallery.length ? project.gallery : [project.image]).map((img, i) => (
                     <SwiperSlide key={i}>
-                      <Image
-                        src={img}
-                        alt={project.Heading}
-                        width={300}
-                        height={300}
-                        className="object-cover rounded-lg"
-                      />
+                      <div className="flex justify-center">
+                        <Image
+                          src={img}
+                          alt={project.Heading}
+                          width={300}
+                          height={300}
+                          className="object-cover rounded-lg"
+                        />
+                      </div>
                     </SwiperSlide>
                   ))}
                 </Swiper>
