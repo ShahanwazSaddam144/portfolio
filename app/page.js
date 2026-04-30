@@ -18,7 +18,6 @@ export default function Home() {
     <Stack />
     <About />
     <Projects />
-    <Hackathon />
     <Services />
     <FAQ />
     <Contact />
