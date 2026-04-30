@@ -38,7 +38,7 @@ export default function Projects({ limit = 10, single = false }) {
       >
         {displayedProjects.map((project, index) => (
           <SwiperSlide key={index} className="flex">
-            <div className="Projects-Container bg-gray-100 rounded-xl p-6 flex flex-col h-153 shadow-md hover:shadow-xl transition w-full">
+            <div className="Projects-Container bg-gradient-to-tl from-[#07151b] via-[#08262f] to-[#0b2f3b] rounded-2xl p-6 flex flex-col h-163 shadow-2xl hover:-translate-y-2 transform-gpu transition-transform w-full border border-cyan-600/10 overflow-hidden">
 
               {/* ✅ IMAGE SWIPER (IMPROVED ONLY HERE) */}
               <div className="relative w-full mb-4 flex justify-center">
@@ -67,11 +67,11 @@ export default function Projects({ limit = 10, single = false }) {
                 </Swiper>
               </div>
 
-              <h2 className="font-bold text-2xl mb-2 text-gray-900 hover:text-blue-700 transition cursor-pointer">
+              <h2 className="font-extrabold text-2xl mb-2 text-white bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-indigo-400 cursor-pointer">
                 {project.Heading}
               </h2>
 
-              <p className="text-gray-300 mb-4">
+              <p className="text-gray-300 mb-4 leading-relaxed">
                 {project.Text}
               </p>
 
@@ -79,14 +79,13 @@ export default function Projects({ limit = 10, single = false }) {
                 {project.technologies.map((tech, idx) => (
                   <span
                     key={idx}
-                    className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold"
+                    className="bg-white/5 text-cyan-200 px-3 py-1 rounded-full text-xs font-semibold border border-white/6"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
-
-              <div className="bg-gray-800 rounded-lg p-3 text-sm text-gray-400 space-y-2 mb-5 border">
+              <div className="bg-white/3 rounded-lg p-3 text-sm text-gray-300 space-y-2 mb-5 border border-white/6">
                 <div className="flex justify-between">
                   <span className="font-semibold">Author:</span>
                   <span>{project.author}</span>
@@ -124,7 +123,7 @@ export default function Projects({ limit = 10, single = false }) {
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gradient-to-r from-blue-600 to-blue-800 px-5 py-2 rounded-lg text-white font-bold hover:opacity-90 transition"
+                    className="bg-gradient-to-r from-cyan-500 to-indigo-600 px-5 py-2 rounded-lg text-white font-bold hover:scale-105 transform transition"
                   >
                     {project.demoLink.endsWith(".apk") ? "Download App" : "Live Demo"}
                   </a>
@@ -135,7 +134,7 @@ export default function Projects({ limit = 10, single = false }) {
                     href={project.Repo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="border-2 border-blue-700 text-blue-700 px-5 py-2 rounded-lg font-bold hover:bg-blue-700 hover:text-white transition"
+                    className="border border-cyan-500 text-cyan-200 px-5 py-2 rounded-lg font-bold hover:bg-cyan-600 hover:text-white transition"
                   >
                     Repo
                   </a>
