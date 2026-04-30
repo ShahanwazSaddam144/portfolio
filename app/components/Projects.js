@@ -19,10 +19,7 @@ export default function Projects({ limit = 10, single = false }) {
     : projects.slice(0, limit);
 
   return (
-    <section
-      className="Projects justify-center items-center mt-20 px-4 mb-10"
-      id="Projects"
-    >
+    <section className="Projects justify-center items-center mt-20 px-4 mb-10" id="Projects">
       <h1 className="text-center font-extrabold text-[35px] text-gray-800 mb-10">
         Projects
       </h1>
@@ -30,7 +27,6 @@ export default function Projects({ limit = 10, single = false }) {
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={30}
-        slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
@@ -42,26 +38,37 @@ export default function Projects({ limit = 10, single = false }) {
       >
         {displayedProjects.map((project, index) => (
           <SwiperSlide key={index} className="flex">
-            <div className="Projects-Container bg-gray-100 rounded-xl p-6 flex flex-col h-153 shadow-md hover:shadow-xl transition">
-              {/* Image (Clickable via slug) */}
-                <div className="relative w-full mb-4 flex justify-center cursor-pointer">
-                  <Image
-                    src={project.image}
-                    alt={project.Heading}
-                    width={300}
-                    height={300}
-                    className="object-cover rounded-lg"
-                  />
-                </div>
+            <div className="Projects-Container bg-gray-100 rounded-xl p-6 flex flex-col h-153 shadow-md hover:shadow-xl transition w-full">
 
-              {/* Title (Clickable via slug) */}
-                <h2 className="font-bold text-2xl mb-2 text-gray-900 hover:text-blue-700 transition cursor-pointer">
-                  {project.Heading}
-                </h2>
+              <div className="relative w-full mb-4 flex justify-center">
+                <Swiper
+                  modules={[Pagination, Autoplay]}
+                  slidesPerView={1}
+                  pagination={{ clickable: true }}
+                  autoplay={{ delay: 2500, disableOnInteraction: false }}
+                >
+                  {(Array.isArray(project.image) ? project.image : [project.image]).map((img, i) => (
+                    <SwiperSlide key={i}>
+                      <Image
+                        src={img}
+                        alt={project.Heading}
+                        width={300}
+                        height={300}
+                        className="object-cover rounded-lg"
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
 
-              {/* Description */}
-              <p className="text-gray-500 mb-4">{project.Text}</p>
-              {/* Tech Stack */}
+              <h2 className="font-bold text-2xl mb-2 text-gray-900 hover:text-blue-700 transition cursor-pointer">
+                {project.Heading}
+              </h2>
+
+              <p className="text-gray-300 mb-4">
+                {project.Text}
+              </p>
+
               <div className="flex flex-wrap gap-2 mb-3">
                 {project.technologies.map((tech, idx) => (
                   <span
@@ -73,40 +80,38 @@ export default function Projects({ limit = 10, single = false }) {
                 ))}
               </div>
 
-              {/* Project Meta Info */}
-              <div className="text-sm text-gray-600 space-y-1 mb-5">
-                <p>
-                  <span className="font-semibold">Author:</span>{" "}
-                  {project.author}
-                </p>
+              <div className="bg-gray-800 rounded-lg p-3 text-sm text-gray-400 space-y-2 mb-5 border">
+                <div className="flex justify-between">
+                  <span className="font-semibold">Author:</span>
+                  <span>{project.author}</span>
+                </div>
 
-                <p>
-                  <span className="font-semibold">Role:</span> {project.role}
-                </p>
+                <div className="flex justify-between">
+                  <span className="font-semibold">Role:</span>
+                  <span>{project.role}</span>
+                </div>
 
-                <p>
-                  <span className="font-semibold">Duration:</span>{" "}
-                  {project.startDate} – {project.endDate}
-                </p>
+                <div className="flex justify-between">
+                  <span className="font-semibold">Duration:</span>
+                  <span>{project.startDate} – {project.endDate}</span>
+                </div>
 
-                <p className="flex items-center gap-2">
+                <div className="flex justify-between items-center">
                   <span className="font-semibold">Status:</span>
                   <span
-                    className={`px-2 py-0.5 rounded-full text-xs font-bold
-        ${
-          project.status === "Completed"
-            ? "bg-green-100 text-green-700"
-            : project.status === "In Progress"
-              ? "bg-yellow-100 text-yellow-700"
-              : "bg-blue-100 text-blue-700"
-        }`}
+                    className={`px-2 py-0.5 rounded-full text-xs font-bold ${
+                      project.status === "Completed"
+                        ? "bg-green-100 text-green-700"
+                        : project.status === "In Progress"
+                        ? "bg-yellow-100 text-yellow-700"
+                        : "bg-blue-100 text-blue-700"
+                    }`}
                   >
                     {project.status}
                   </span>
-                </p>
+                </div>
               </div>
 
-              {/* Buttons */}
               <div className="mt-auto flex gap-3 flex-wrap">
                 {project.demoLink && (
                   <a
@@ -115,9 +120,7 @@ export default function Projects({ limit = 10, single = false }) {
                     rel="noopener noreferrer"
                     className="bg-gradient-to-r from-blue-600 to-blue-800 px-5 py-2 rounded-lg text-white font-bold hover:opacity-90 transition"
                   >
-                    {project.demoLink.endsWith(".apk")
-                      ? "Download App"
-                      : "Live Demo"}
+                    {project.demoLink.endsWith(".apk") ? "Download App" : "Live Demo"}
                   </a>
                 )}
 
@@ -131,8 +134,8 @@ export default function Projects({ limit = 10, single = false }) {
                     Repo
                   </a>
                 )}
-                <Link href={`/projects/${project.slug}`} className="ml-auto bg-gradient-to-r from-cyan-500 to-indigo-600 text-white px-4 py-2 rounded-lg font-bold hover:scale-[1.02] transform will-change-transform transition-shadow shadow-lg">Read more</Link>
               </div>
+
             </div>
           </SwiperSlide>
         ))}
