@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowRight, Sparkles, Code2 } from "lucide-react";
+import { ArrowRight, Sparkles, Code2, Trophy } from "lucide-react";
+import Image from "next/image";
 
 const messages = [
   "Full Stack Developer",
@@ -34,7 +35,6 @@ const Home_ = () => {
   const [techChar, setTechChar] = useState(0);
   const [techDeleting, setTechDeleting] = useState(false);
 
-  // ROLE TYPEWRITER (optimized)
   useEffect(() => {
     const current = messages[msgIndex];
     const speed = isDeleting ? 40 : 80;
@@ -59,9 +59,8 @@ const Home_ = () => {
     }, speed);
 
     return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting]); // removed msgIndex to reduce rerenders
+  }, [charIndex, isDeleting]);
 
-  // TECH STACK TYPEWRITER (optimized)
   useEffect(() => {
     const current = techStacks[techIndex];
     const speed = techDeleting ? 35 : 70;
@@ -86,7 +85,7 @@ const Home_ = () => {
     }, speed);
 
     return () => clearTimeout(timeout);
-  }, [techChar, techDeleting]); // removed techIndex
+  }, [techChar, techDeleting]);
 
   return (
     <section className="min-h-screen flex items-center justify-center px-4 sm:px-8 lg:px-16 pt-24 pb-16 relative overflow-hidden">
@@ -95,46 +94,18 @@ const Home_ = () => {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-20px); }
         }
-
-        /* Glow optimized (no heavy box-shadow animation) */
-        @keyframes glow {
-          0%, 100% { opacity: 0.6; }
-          50% { opacity: 1; }
-        }
-
         @keyframes gradientShift {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
-
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-
-        .animate-glow {
-          animation: glow 2s ease-in-out infinite;
-        }
-
+        .animate-float { animation: float 3s ease-in-out infinite; }
         .gradient-shift {
           animation: gradientShift 3s ease infinite;
           background-size: 200% 200%;
         }
-
-        .hero-3d {
-          perspective: 1000px;
-          transform-style: preserve-3d;
-        }
-
-        /* 3D hover only for desktop */
-        @media (min-width: 768px) {
-          .card-3d:hover {
-            transform: rotateX(5deg) rotateY(10deg) translateZ(20px);
-          }
-        }
-
+        .hero-3d { perspective: 1000px; transform-style: preserve-3d; }
         .card-3d {
-          transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
           transform-style: preserve-3d;
         }
       `}</style>
@@ -144,18 +115,22 @@ const Home_ = () => {
 
           <div className="animate-float">
             <div className="relative inline-block">
-              
-              {/* Glow background (blur only on desktop) */}
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-full opacity-30 animate-glow hidden md:block blur-3xl"></div>
 
-              <div className="relative bg-gradient-to-r from-slate-900 to-slate-800 p-8 md:p-12 rounded-3xl border border-cyan-500/30 md:backdrop-blur-xl card-3d">
+              <div className="relative bg-transparent p-8 md:p-12 rounded-3xl card-3d">
 
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <Sparkles className="w-6 h-6 text-cyan-400 animate-pulse" />
-                  <span className="text-cyan-400 font-semibold text-sm md:text-base">
-                    Welcome To My Portfolio
-                  </span>
-                  <Sparkles className="w-6 h-6 text-cyan-400 animate-pulse" />
+                <div className="flex flex-col items-center mb-6">
+                  <div className="w-28 h-28 rounded-full overflow-hidden border border-cyan-500/30 mb-3">
+                    <Image
+                      src="/developer.jpg"
+                      alt="profile"
+                      width={112}
+                      height={112}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                  <div className="text-xs text-cyan-400 uppercase tracking-widest">
+                    Developer • Engineer • Creator
+                  </div>
                 </div>
 
                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-4 gradient-shift">
@@ -166,7 +141,6 @@ const Home_ = () => {
                   Building Beautiful & Scalable Digital Solutions
                 </p>
 
-                {/* Typewriter */}
                 <div className="flex justify-center items-center mb-8">
                   <div className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30">
                     <span className="text-lg md:text-2xl font-bold text-cyan-300">
@@ -182,22 +156,20 @@ const Home_ = () => {
                   a focus on user experience and performance.
                 </p>
 
-                {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                   <Link href="/About">
-                    <button className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-lg hover:scale-105 transition-all duration-300">
+                    <button className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-lg">
                       View My Work
                     </button>
                   </Link>
 
                   <Link href="/Contact">
-                    <button className="px-8 py-3 border-2 border-cyan-500 text-cyan-400 font-bold rounded-lg hover:bg-cyan-500/10 hover:scale-105 transition-all duration-300">
+                    <button className="px-8 py-3 border-2 border-cyan-500 text-cyan-400 font-bold rounded-lg">
                       Get In Touch
                     </button>
                   </Link>
                 </div>
 
-                {/* Tech stack */}
                 <div className="pt-8 border-t border-cyan-500/20">
                   <p className="text-gray-400 text-sm mb-4 flex items-center justify-center gap-2">
                     <Code2 className="w-4 h-4" />
@@ -211,14 +183,23 @@ const Home_ = () => {
                   </div>
                 </div>
 
+                <div className="mt-8">
+                  <a href="https://devpost.com/software/ecotracker-p05z4d" target="_blank">
+                    <div className="px-6 py-3 rounded-xl bg-gradient-to-r from-yellow-500/10 to-amber-500/10">
+                    <div className="inline-flex items-center gap-3">
+                      <Trophy className="w-5 h-5 text-yellow-400" />
+                      <span className="text-yellow-300 font-semibold">
+                        Hackathons & Achievements
+                      </span>
+                    </div>
+                      <p className="text-[17px] font-semibold">37th Rank Among 786 Participants</p>
+                     </div>
+                  </a>
+                </div>
+
               </div>
             </div>
           </div>
-
-          {/* Decorative blur (desktop only) */}
-          <div className="absolute top-20 left-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl hidden md:block"></div>
-          <div className="absolute bottom-20 right-10 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl hidden md:block"></div>
-          <div className="absolute top-1/2 right-20 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl hidden md:block"></div>
 
         </div>
       </div>
