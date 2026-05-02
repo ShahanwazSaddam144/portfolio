@@ -16,10 +16,6 @@ import {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    document.body.classList.add('dark-mode');
-  }, []);
-
   return (
     <nav className="fixed top-0 left-0 w-full p-4 z-50 backdrop-blur-xl bg-opacity-80">
       <style>{`
@@ -35,6 +31,33 @@ const Navbar = () => {
         @keyframes navFloat {
           0%,100% { transform: translateY(0px); }
           50% { transform: translateY(-4px); }
+        }
+
+        .logo {
+          font-weight: 800;
+          font-size: 1.4rem;
+          background: linear-gradient(90deg, #22d3ee, #3b82f6, #a855f7);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          position: relative;
+          display: inline-block;
+          animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        .logo::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 10px;
+          filter: blur(12px);
+          opacity: 0.5;
+          background: linear-gradient(90deg, #22d3ee, #3b82f6, #a855f7);
+          z-index: -1;
+        }
+
+        @keyframes logoGlow {
+          0%,100% { transform: scale(1); }
+          50% { transform: scale(1.08); }
         }
 
         .nav-link {
@@ -78,6 +101,13 @@ const Navbar = () => {
       `}</style>
 
       <div className="Navbar rounded-2xl mx-auto max-w-7xl px-6 py-3 flex items-center justify-between">
+
+        {/* Logo */}
+        <div className="flex items-center">
+          <Link href="/" className="logo">
+            SSB
+          </Link>
+        </div>
 
         {/* Desktop Nav */}
         <ul className="hidden min-[1021px]:flex gap-3 items-center mx-auto">

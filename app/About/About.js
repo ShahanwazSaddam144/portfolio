@@ -22,7 +22,10 @@ const About = () => {
   }, []);
 
   useEffect(() => {
-    const daysInterval = setInterval(() => setLearningDays(getLearningDays()), 1000 * 60 * 60);
+    const daysInterval = setInterval(
+      () => setLearningDays(getLearningDays()),
+      1000 * 60 * 60,
+    );
     return () => clearInterval(daysInterval);
   }, []);
 
@@ -66,9 +69,14 @@ const About = () => {
           <h1 className="text-5xl sm:text-6xl font-extrabold text-center bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-6 animate-fadeIn">
             About Me
           </h1>
-          
+
           <p className="text-xl text-center text-gray-300 max-w-3xl mx-auto mb-16 animate-fadeIn leading-relaxed">
-            I'm <span className="text-cyan-400 font-bold">Shahnawaz Saddam Butt</span>, a 16-year-old full-stack developer creating modern, responsive websites with cutting-edge technologies.
+            I'm{" "}
+            <span className="text-cyan-400 font-bold">
+              Shahnawaz Saddam Butt
+            </span>
+            , a 16-year-old full-stack developer creating modern, responsive
+            websites with cutting-edge technologies.
           </p>
 
           {/* Info Cards Grid - 3D */}
@@ -76,39 +84,66 @@ const About = () => {
             {/* Card 1 - Timer */}
             <div className="card-3d relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-cyan-500/30 group-hover:border-cyan-500/60 rounded-3xl p-8 text-center animate-float group-hover:animate-glow" style={{animationDelay: '0s'}}>
+              <div
+                className="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-cyan-500/30 group-hover:border-cyan-500/60 rounded-3xl p-8 text-center animate-float group-hover:animate-glow"
+                style={{ animationDelay: "0s" }}
+              >
                 <div className="mb-4 inline-block p-4 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20">
                   <Zap className="w-8 h-8 text-cyan-400" />
                 </div>
-                <h2 className="text-2xl font-bold text-cyan-300 mb-3">⏰ Live Time</h2>
-                <h4 className="text-4xl text-cyan-400 font-extrabold font-mono">{currentTime}</h4>
-                <p className="text-sm text-gray-400 mt-4">Real-time coding timer</p>
+                <h2 className="text-2xl font-bold text-cyan-300 mb-3">
+                  ⏰ Live Time
+                </h2>
+                <h4 className="text-4xl text-cyan-400 font-extrabold font-mono">
+                  {currentTime}
+                </h4>
+                <p className="text-sm text-gray-400 mt-4">
+                  Real-time coding timer
+                </p>
               </div>
             </div>
 
             {/* Card 2 - Learning Days */}
             <div className="card-3d relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-cyan-500/30 group-hover:border-cyan-500/60 rounded-3xl p-8 text-center animate-float group-hover:animate-glow" style={{animationDelay: '0.1s'}}>
+              <div
+                className="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-cyan-500/30 group-hover:border-cyan-500/60 rounded-3xl p-8 text-center animate-float group-hover:animate-glow"
+                style={{ animationDelay: "0.1s" }}
+              >
                 <div className="mb-4 inline-block p-4 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20">
                   <Code className="w-8 h-8 text-blue-400" />
                 </div>
-                <h2 className="text-2xl font-bold text-blue-300 mb-3">📚 Days Coding</h2>
-                <h4 className="text-5xl text-blue-400 font-extrabold">{learningDays}+</h4>
-                <p className="text-sm text-gray-400 mt-4">Days of learning journey</p>
+                <h2 className="text-2xl font-bold text-blue-300 mb-3">
+                  📚 Days Coding
+                </h2>
+                <h4 className="text-5xl text-blue-400 font-extrabold">
+                  {learningDays}+
+                </h4>
+                <p className="text-sm text-gray-400 mt-4">
+                  Days of learning journey
+                </p>
               </div>
             </div>
 
             {/* Card 3 - Projects */}
             <div className="card-3d relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-cyan-500/30 group-hover:border-cyan-500/60 rounded-3xl p-8 text-center animate-float group-hover:animate-glow" style={{animationDelay: '0.2s'}}>
+              <div
+                className="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-cyan-500/30 group-hover:border-cyan-500/60 rounded-3xl p-8 text-center animate-float group-hover:animate-glow"
+                style={{ animationDelay: "0.2s" }}
+              >
                 <div className="mb-4 inline-block p-4 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20">
                   <Award className="w-8 h-8 text-purple-400" />
                 </div>
-                <h2 className="text-2xl font-bold text-purple-300 mb-3">🚀 Projects</h2>
-                <h4 className="text-5xl text-purple-400 font-extrabold">{deployedProjects}+</h4>
-                <p className="text-sm text-gray-400 mt-4">Live & deployed projects</p>
+                <h2 className="text-2xl font-bold text-purple-300 mb-3">
+                  🚀 Projects
+                </h2>
+                <h4 className="text-5xl text-purple-400 font-extrabold">
+                  {deployedProjects}+
+                </h4>
+                <p className="text-sm text-gray-400 mt-4">
+                  Live & deployed projects
+                </p>
               </div>
             </div>
           </div>
@@ -135,7 +170,7 @@ const About = () => {
             { number: "100%", label: "Dedication", icon: "💯" },
             { number: "10+", label: "Technologies", icon: "⚡" },
           ].map((stat, index) => (
-            <div 
+            <div
               key={index}
               className="card-3d relative group"
               style={{ animationDelay: `${index * 0.1}s` }}
@@ -153,45 +188,84 @@ const About = () => {
         </div>
 
         {/* Journey Timeline */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
             My Journey
           </h2>
 
-          <div className="space-y-8">
-            {[
-              {
-                year: "2024",
-                title: "Started Web Development",
-                desc: "Began learning HTML and CSS with a strong passion for building interactive websites.",
-              },
-              {
-                year: "2025",
-                title: "Full-Stack Developer",
-                desc: "Mastered JavaScript, React, Node.js, Express, and MongoDB for complete full-stack solutions.",
-              },
-              {
-                year: "2026 (Now)",
-                title: "Advanced Projects & Clients",
-                desc: "Building modern apps with Next.js, Tailwind CSS, authentication systems, and advanced features.",
-              },
-            ].map((journey, index) => (
-              <div key={index} className="card-3d relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="relative flex gap-6 bg-gradient-to-r from-slate-800/50 to-slate-900/50 backdrop-blur-xl border border-cyan-500/20 group-hover:border-cyan-500/40 rounded-2xl p-8 group-hover:animate-glow">
-                  <div className="flex-shrink-0">
-                    <span className="flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 text-white font-bold text-lg">
-                      {index + 1}
-                    </span>
+          <div className="relative">
+            <div className="absolute left-5 top-0 bottom-0 w-[2px] bg-gradient-to-b from-cyan-500 via-blue-500 to-purple-500"></div>
+
+            <div className="space-y-10">
+              {[
+                {
+                  title: "Early 2025",
+                  desc: "Learned the basics of how websites are built and styled.",
+                },
+                {
+                  title: "Spring 2025",
+                  desc: "Started building small interactive projects and learning how logic and code work together.",
+                },
+                {
+                  title: "Mid 2025",
+                  desc: "Built complete web applications with modern tools and real features like dashboards and authentication.",
+                },
+                {
+                  title: "Summer 2025",
+                  desc: "Launched multiple real projects and ran them on my own Linux servers.",
+                },
+                {
+                  title: "Late 2025",
+                  desc: "Deepened focus on performance, Core Web Vitals, and production-grade code quality.",
+                },
+                {
+                  title: "March 2026",
+                  desc: "🏆 Placed 37th at Hack for Humanity 2026 — built EcoTracker solo, an Backend Contoller waste classifier with gamified impact tracking, competing against 775 participants internationally.",
+                },
+                {
+                  title: "Now",
+                  desc: "Going deep on DSA, mathematics, and ML fundamentals — building the foundation for serious AI/ML research.",
+                },
+                {
+                  title: "Next",
+                  desc: "Building an end-to-end ML audio pipeline for speaker diarization and publishing original research.",
+                },
+              ].map((item, index, arr) => (
+                <div
+                  key={index}
+                  className="relative flex items-start gap-6 group"
+                >
+                  <div className="relative z-10">
+                    <div
+                      className={`w-10 h-10 flex items-center justify-center rounded-full border-2 ${
+                        index === arr.length - 1
+                          ? "bg-purple-500 border-purple-500"
+                          : "bg-slate-900 border-cyan-400"
+                      }`}
+                    >
+                      <div
+                        className={`w-3 h-3 rounded-full ${
+                          index === arr.length - 1 ? "bg-white" : "bg-cyan-400"
+                        }`}
+                      ></div>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <span className="text-sm font-bold text-cyan-400">{journey.year}</span>
-                    <h3 className="text-xl font-bold text-gray-100 mt-2">{journey.title}</h3>
-                    <p className="text-gray-400 mt-3 leading-relaxed">{journey.desc}</p>
+
+                  <div className="flex-1 card-3d relative">
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+                    <div className="relative bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-xl border border-cyan-500/20 group-hover:border-cyan-500/40 rounded-2xl p-6 group-hover:animate-glow">
+                      <h3 className="text-lg font-bold text-cyan-400 mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-400 leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

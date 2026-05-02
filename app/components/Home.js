@@ -89,35 +89,11 @@ const Home_ = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center px-4 sm:px-8 lg:px-16 pt-24 pb-16 relative overflow-hidden">
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-        }
-        @keyframes gradientShift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .animate-float { animation: float 3s ease-in-out infinite; }
-        .gradient-shift {
-          animation: gradientShift 3s ease infinite;
-          background-size: 200% 200%;
-        }
-        .hero-3d { perspective: 1000px; transform-style: preserve-3d; }
-        .card-3d {
-          transform-style: preserve-3d;
-        }
-      `}</style>
-
-      <div className="w-full hero-3d">
+      <div className="w-full">
         <div className="flex flex-col justify-center items-center gap-8 md:gap-12 text-center">
-
-          <div className="animate-float">
+          <div className="">
             <div className="relative inline-block">
-
-              <div className="relative bg-transparent p-8 md:p-12 rounded-3xl card-3d">
-
+              <div className="relative bg-transparent p-8 md:p-12 rounded-3xl">
                 <div className="flex flex-col items-center mb-6">
                   <div className="w-28 h-28 rounded-full overflow-hidden border border-cyan-500/30 mb-3">
                     <Image
@@ -145,15 +121,17 @@ const Home_ = () => {
                   <div className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30">
                     <span className="text-lg md:text-2xl font-bold text-cyan-300">
                       {text}
-                      <span className="animate-pulse text-cyan-400 ml-1">|</span>
+                      <span className="animate-pulse text-cyan-400 ml-1">
+                        |
+                      </span>
                     </span>
                   </div>
                 </div>
 
                 <p className="text-gray-300 text-sm md:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
                   I create modern, fast, and fully responsive web applications.
-                  Specializing in React, Next.js, and full-stack development with
-                  a focus on user experience and performance.
+                  Specializing in React, Next.js, and full-stack development
+                  with a focus on user experience and performance.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -178,29 +156,41 @@ const Home_ = () => {
                   <div className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-slate-800 to-slate-700 border border-slate-600/30">
                     <span className="text-cyan-300 font-semibold text-sm md:text-base">
                       {techText}
-                      <span className="animate-pulse text-blue-400 ml-1">▌</span>
+                      <span className="animate-pulse text-blue-400 ml-1">
+                        ▌
+                      </span>
                     </span>
                   </div>
                 </div>
-
-                <div className="mt-8">
-                  <a href="https://devpost.com/software/ecotracker-p05z4d" target="_blank">
-                    <div className="px-6 py-3 rounded-xl bg-gradient-to-r from-yellow-500/10 to-amber-500/10">
-                    <div className="inline-flex items-center gap-3">
-                      <Trophy className="w-5 h-5 text-yellow-400" />
-                      <span className="text-yellow-300 font-semibold">
-                        Hackathons & Achievements
-                      </span>
-                    </div>
-                      <p className="text-[17px] font-semibold">37th Rank Among 786 Participants</p>
-                     </div>
-                  </a>
-                </div>
-
               </div>
             </div>
           </div>
-
+          <div className="mt-2">
+            <div className="px-6 py-3 rounded-xl bg-gradient-to-r from-yellow-500/10 to-amber-500/10">
+              <div className="inline-flex items-center gap-3">
+                <Trophy className="w-5 h-5 text-yellow-400" />
+                <span className="text-yellow-300 font-semibold">
+                  Hackathons & Achievements
+                </span>
+              </div>
+              <p className="text-[17px] font-semibold">
+                37th Rank Among 786 Participants
+              </p>
+              <div className="flex justify-center items-center text-center gap-3">
+                <a
+                  href="https://devpost.com/software/ecotracker-p05z4d"
+                  target="_blank"
+                >
+                  <button
+                    className="bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center
+                      font-semibold rounded-[5px] mt-3 px-4 py-1 cursor-pointer"
+                  >
+                    View Project <ArrowRight size={20} />
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
