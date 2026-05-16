@@ -8,6 +8,7 @@ import FAQ from './components/FAQ';
 import Hackathon from './components/Hackathon';
 import GithubSection from './components/GithubSection';
 import Contact from './Contact/Contact';
+import BgAnimations from './components/BgAnimations';
 
 export default function Home() {
   return (
