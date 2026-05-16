@@ -165,7 +165,7 @@ const About = () => {
         {/* Facts Grid - 3D */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {[
-            { number: "20+", label: "Projects", icon: "🎯" },
+            { number: "10+", label: "Projects", icon: "🎯" },
             { number: "1+", label: "Year", icon: "⏳" },
             { number: "100%", label: "Dedication", icon: "💯" },
             { number: "10+", label: "Technologies", icon: "⚡" },
