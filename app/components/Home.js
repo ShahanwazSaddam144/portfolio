@@ -95,9 +95,9 @@ const Home_ = () => {
             <div className="relative inline-block">
               <div className="relative bg-transparent p-8 md:p-12 rounded-3xl">
                 <div className="flex flex-col items-center mb-6">
-                  <div className="w-28 h-28 rounded-full overflow-hidden border border-cyan-500/30 mb-3">
+                  <div className="w-35 h-35 rounded-full overflow-hidden border border-cyan-500/30 mb-3">
                     <Image
-                      src="/developer.jpg"
+                      src="/shahnawaz.jpeg"
                       alt="profile"
                       width={112}
                       height={112}

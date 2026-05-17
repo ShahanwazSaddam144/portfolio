@@ -5,7 +5,7 @@ import {GitHubCalendar} from "react-github-calendar";
 import { Sparkles } from "lucide-react";
 
 export default function GithubSection() {
-  const username = "ShahanwazSaddam144";
+  const username = "ShahnawazSaddam16";
 
   return (
     <section id="github" className="py-12 px-4 sm:px-6 lg:px-8">

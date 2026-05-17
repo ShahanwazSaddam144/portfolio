@@ -138,7 +138,7 @@ const Navbar = () => {
 
           <li>
             <Link
-              href="https://github.com/ShahanwazSaddam144?tab=repositories"
+              href="https://github.com/ShahnawazSaddam16?tab=repositories"
               target="_blank"
               className="nav-link flex items-center gap-2 text-gray-300 hover:text-cyan-400 px-4 py-2 rounded-xl font-semibold hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-blue-500/10"
             >
